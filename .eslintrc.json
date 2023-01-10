@@ -4,11 +4,8 @@
     "semi": [2, "always"],
     "quotes": ["error", "double"]
    
-  },
-  "env": {
-    "node": true
-   
   }
+ 
 }
 
 
