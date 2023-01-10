@@ -5,8 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps: #step
       
-        - run: npm install
-        - run: npm run build
+
         - name: Checkout code
           uses: actions/checkout@v2
         - name: Linter execution
