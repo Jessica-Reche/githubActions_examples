@@ -1,5 +1,6 @@
 name:  main_workflow
 on: [push]
+permissions: read-all
 jobs:
   linter-execution: #job
     runs-on: ubuntu-latest
