@@ -1,0 +1,23 @@
+{
+  "name": "github-actios",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jessica-Reche/githubActions_examples.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jessica-Reche/githubActions_examples/issues"
+  },
+  "homepage": "https://github.com/Jessica-Reche/githubActions_examples#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

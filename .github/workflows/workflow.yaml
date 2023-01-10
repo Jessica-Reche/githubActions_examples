@@ -4,10 +4,18 @@ jobs:
   linter-execution: #job
     runs-on: ubuntu-latest
     steps: #step
-      
 
         - name: Checkout code
           uses: actions/checkout@v2
+          with:
+            fetch-depth: 0
+        - name: Node.js setup
+          uses: actions/setup-node@v2
+          with:
+            node-version: '18.13.0'
+        - name: Install dependencies
+          run: npm install
+
         - name: Linter execution
           uses: github/super-linter@v4
 
@@ -18,3 +26,4 @@ jobs:
             JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.json
             VALIDATE_JAVASCRIPT_ES: true
        
+ 
