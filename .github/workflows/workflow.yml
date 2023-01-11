@@ -22,5 +22,27 @@ jobs:
             LINTER_RULES_PATH: /
             JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.json
             VALIDATE_JAVASCRIPT_ES: true
+
+  test-execution:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Checkout code
+          uses: actions/checkout@v3
+          with:
+           fetch-depth: 0
+        - name: Test execution
+          run: npm install jest && npm test
+
+          env:
+            CI: true
+            DEFAULT_BRANCH: "nodejs_linter_job"
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            
+    
+
+            
+
+
+
        
  

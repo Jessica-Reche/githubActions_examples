@@ -4,14 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Jessica-Reche/githubActions_examples.git"
   },
-  "author": "",
+  "author": "Jesica",
   "license": "ISC",
+  "dependencies": {
+    "jest": "^27.4.3"},
   "bugs": {
     "url": "https://github.com/Jessica-Reche/githubActions_examples/issues"
   },
