@@ -49,6 +49,6 @@ jobs:
     steps:
      - uses: adeloyedeji/github-actions-hello@v1.0
        with:
-         who-to-greet: ${{ env.2DAW }}
+         who-to-greet: ${{ vars.2DAW }}
       
 
