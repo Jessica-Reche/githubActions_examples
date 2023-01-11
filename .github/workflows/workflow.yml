@@ -35,7 +35,7 @@ jobs:
 
           env:
             CI: true
-            DEFAULT_BRANCH: "nodejs_linter_job"
+            DEFAULT_BRANCH: "nodejs_jest_job"
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             
     
