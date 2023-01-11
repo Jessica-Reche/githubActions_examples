@@ -9,15 +9,16 @@ jobs:
         node: [10, 12]
      
     steps: #step
-      - name: Setting node version
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node }}
+    
          
       - name: Checkout code
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+      - name: Setting node version
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
 
       - name: Linter execution
         uses: github/super-linter@v4
