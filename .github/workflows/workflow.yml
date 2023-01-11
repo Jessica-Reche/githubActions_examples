@@ -6,22 +6,16 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [10.x, 12.x]
+        node: [10, 12]
      
     steps: #step
-    
-         
-      - name: Checkout code
-        uses: actions/checkout@v3
+     
       - name: Setting node version
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node }}
-          cache: 'npm'
-      - run: npm ci
-      - run: npm run build --if-present
-          
-
+      - name: Checkout code
+        uses: actions/checkout@v3
       - name: Linter execution
         uses: github/super-linter@v4
 
