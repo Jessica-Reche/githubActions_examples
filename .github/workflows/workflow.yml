@@ -45,6 +45,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
      2DAW: " 2DAW"
+     DEFAULT_BRANCH: "nodejs_enviroment_job"
     steps:
      - uses: adeloyedeji/github-actions-hello@v1.0
        with:
