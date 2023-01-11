@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [10, 12]
+        node-version: [10.x, 12.x]
      
     steps: #step
     
@@ -19,6 +19,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
+          cache: 'npm'
 
       - name: Linter execution
         uses: github/super-linter@v4
@@ -37,6 +38,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+          
       - name: Test execution
         run: npm install jest && npm test
 
