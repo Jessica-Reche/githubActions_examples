@@ -35,5 +35,5 @@ jobs:
         uses: dswistowski/surge-sh-action@v1 
         with:
            domain: 'jessica-2daw-despliegues.surge.sh'
-           project: './build'
+           path: './build'
            token: ${{ secrets.SURGE_TOKEN }}
