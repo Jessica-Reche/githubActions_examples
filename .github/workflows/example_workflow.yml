@@ -25,10 +25,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Node 16
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'
+     
       - name: Download build folder
         uses: actions/download-artifact@v3
         with:
@@ -38,3 +35,5 @@ jobs:
         with:
            domain: 'jessica-2daw-despliegues.surge.sh'
            token: ${{ secrets.SURGE_TOKEN }}
+
+           
