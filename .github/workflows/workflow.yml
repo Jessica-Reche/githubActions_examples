@@ -54,5 +54,5 @@ jobs:
       #  uses: adeloyedeji/github-actions-hello@v1.0
       #  with:
       #    who-to-greet: " ${{ toJSON(env) }}"
-      - run: echo 'Hi ${{ env.2DAW }}'
+      - run:  $2DAW
   
