@@ -47,8 +47,9 @@ jobs:
      2DAW: 2DAW
     
     steps:
-     - name: hello
-       uses: adeloyedeji/github-actions-hello@v1.0
-       with:
-         who-to-greet: " ${{ toJSON(env) }}"
+    # - name: hello
+      #  uses: adeloyedeji/github-actions-hello@v1.0
+      #  with:
+      #    who-to-greet: " ${{ toJSON(env) }}"
+      - run: echo 'Hi ${{ env.2DAW }}'
   
