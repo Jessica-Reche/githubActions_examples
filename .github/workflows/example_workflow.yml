@@ -5,8 +5,8 @@ on:
     branches:
       - react_app_deploy
 
-jobs:
-  build:
+jobs: 
+  build: #JOB 
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -21,7 +21,7 @@ jobs:
           name: build
           path: build
 
-  deploy:
+  deploy: #JOB
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -31,9 +31,7 @@ jobs:
         with:
           name: build
       - name: Deploy React App
-      #Crear cuenta en surge.sh y crear un token y un dominio y usuario
         uses: dswistowski/surge-sh-action@v1 
         with:
-           domain: 'jessica-2daw-despliegues.surge.sh'
-           path: './build'
+           domain: ${{ secrets.SURGE_DOMAIN }}
            token: ${{ secrets.SURGE_TOKEN }}
