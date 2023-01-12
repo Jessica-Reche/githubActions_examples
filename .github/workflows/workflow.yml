@@ -45,11 +45,10 @@ jobs:
     runs-on: ubuntu-latest
     env:
      2DAW: 2DAW
-     env_var: ${{ vars.ENV_CONTEXT_VAR }}
     
     steps:
      - name: hello
        uses: adeloyedeji/github-actions-hello@v1.0
        with:
-         who-to-greet: " ${{ vars.GREET_NAME }}"
+         who-to-greet: " ${{ toJSON(env.2DAW) }}"
   
