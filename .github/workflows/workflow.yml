@@ -51,8 +51,7 @@ jobs:
         uses: adeloyedeji/github-actions-hello@v1.0
         with:
           who-to-greet: '${{ env.DAW }}'
-      #- run: echo 'Hi ${{ env.DAW }}'  # Hi Mona
-      
+   
 
     
   
