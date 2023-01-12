@@ -34,8 +34,10 @@ jobs:
       #Crear cuenta en surge.sh y crear un token y un dominio y usuario
         uses: dswistowski/surge-sh-action@v1 
         with:
-          surge_token: ${{ secrets.SURGE_TOKEN }}
-          surge_domain: ${{ secrets.SURGE_DOMAIN }}
-          surge_login: ${{ secrets.SURGE_LOGIN }}
-          surge_project: ./build
-          surge_options: --token ${{ secrets.SURGE_TOKEN }} --domain ${{ secrets.SURGE_DOMAIN }} --login ${{ secrets.SURGE_LOGIN }}
+ 
+          token: ${{ secrets.SURGE_TOKEN }}
+          email: ${{ secrets.SURGE_EMAIL }}
+          domain: ${{ secrets.SURGE_DOMAIN }}
+          project: ./build
+          args: --domain ${{ secrets.SURGE_DOMAIN }}.surge.sh
+       
