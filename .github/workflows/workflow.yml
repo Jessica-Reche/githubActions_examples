@@ -1,9 +1,6 @@
 name: main_workflow
 on: [push]
-env:
- 2DAW: 2DAW
- super_duper_var: totally_awesome
- 
+
 jobs:
   linter-execution: #job
     runs-on: ubuntu-latest
@@ -46,7 +43,11 @@ jobs:
 
   environment_test_execution: #job
     runs-on: ubuntu-latest
-   
+    env:
+     2DAW: 2DAW
+     DEFAULT_BRANCH: "nodejs_environment_job"
+     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
     
     steps:
     # - name: hello
