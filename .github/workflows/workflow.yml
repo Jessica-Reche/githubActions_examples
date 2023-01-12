@@ -1,20 +1,58 @@
-name: Hi Mascot
-on: push
-env:
-  mascot: Mona
-  super_duper_var: totally_awesome
+name: main_workflow
+on: [push]
 
 jobs:
-  windows_job:
-    runs-on: windows-latest
-    steps:
-      - run: echo 'Hi ${{ env.mascot }}'  # Hi Mona
-      - run: echo 'Hi ${{ env.mascot }}'  # Hi Octocat
+  linter-execution: #job
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [10, 12]
+
+    steps: #step
+      - name: Setting node version
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Linter execution
+        uses: github/super-linter@v4
+
         env:
-          mascot: Octocat
-  linux_job:
+          DEFAULT_BRANCH: "nodejs_linter_job"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          LINTER_RULES_PATH: /
+          JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.json
+          VALIDATE_JAVASCRIPT_ES: true
+
+  test-execution: #job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Test execution
+        run: npm install jest && npm test
+
+        env:
+          CI: true
+          DEFAULT_BRANCH: "nodejs_nodeversions_job"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  environment_test_execution: #job
     runs-on: ubuntu-latest
     env:
-      mascot: Tux
+     2DAW: 2DAW
+     DEFAULT_BRANCH: "nodejs_environment_job"
+     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
+    
     steps:
-      - run: echo 'Hi ${{ env.mascot }}'  # Hi Tux
+     - name: hello
+       uses: adeloyedeji/github-actions-hello@v1.0
+       with:
+        who-to-greet: echo "$2DAW"
+     
+  
