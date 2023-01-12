@@ -31,11 +31,9 @@ jobs:
         with:
           name: build
       - name: Deploy React App
-      #desplegar los artefactos descargados en rurge
-        uses: dswistowski/surge-sh-action@v1
-        with:
-          domain: ${{ secrets.surge_domain }}
-          project: '.'
-          login: ${{ secrets.surge_login }}
-          token: ${{ secrets.surge_token }}
+      #desplegar los artefactos descargados en rurge e iniciar sesion en surje para luego  iniciar el dominio
+        run: |
+          npm install -g surge
+          surge --project ./build --domain https://react-app-deploy.surge.sh
+          
 
