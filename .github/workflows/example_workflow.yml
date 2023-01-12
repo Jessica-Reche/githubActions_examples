@@ -37,4 +37,4 @@ jobs:
           login: jessikareix20@gmail.com
           token: ${{ secrets.SURGE_TOKEN }}
           domain: ${{ secrets.SURGE_DOMAIN }}
-          project: ./build
+          project: ./build 
