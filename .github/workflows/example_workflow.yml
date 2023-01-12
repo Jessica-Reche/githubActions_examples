@@ -32,7 +32,7 @@ jobs:
           name: build
       - name: Deploy React App
       #Crear cuenta en surge.sh y crear un token y un dominio y usuario
-        uses: peaceiris/actions-surge@v3
+        uses: dswistowski/surge-sh-action@v1 
         with:
           surge_token: ${{ secrets.SURGE_TOKEN }}
           surge_domain: ${{ secrets.SURGE_DOMAIN }}
