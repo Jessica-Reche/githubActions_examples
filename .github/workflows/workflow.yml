@@ -44,14 +44,12 @@ jobs:
   environment_test_execution: #job
     runs-on: ubuntu-latest
     env:
-     mascot: Mona
+     DAW: 2DAW
      super_duper_var: totally_awesome
     
     steps:
-      - run: echo 'Hi ${{ env.mascot }}'  # Hi Mona
-      - run: echo 'Hi ${{ env.mascot }}'  # Hi Octocat
-        env:
-          mascot: Octocat
+      - run: echo 'Hi ${{ env.DAW }}'  # Hi Mona
+      
 
     
   
