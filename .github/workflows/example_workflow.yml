@@ -31,9 +31,11 @@ jobs:
         with:
           name: build
       - name: Deploy React App
-      #desplegar los artefactos descargados en rurge e iniciar sesion en surje para luego  iniciar el dominio
-        run: |
-          npm install -g surge
-          surge --project ./build --domain https://react-app-deploy.surge.sh
-          
-
+      #Crear cuenta en surge.sh y crear un token y un dominio y usuario
+        uses: peaceiris/actions-surge@v3
+        with:
+          surge_token: ${{ secrets.SURGE_TOKEN }}
+          surge_domain: ${{ secrets.SURGE_DOMAIN }}
+          surge_login: ${{ secrets.SURGE_LOGIN }}
+          surge_project: ./build
+          surge_options: --token ${{ secrets.SURGE_TOKEN }} --domain ${{ secrets.SURGE_DOMAIN }} --login ${{ secrets.SURGE_LOGIN }}
