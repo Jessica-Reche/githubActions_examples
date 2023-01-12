@@ -42,14 +42,16 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   environment_test_execution: #job
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     env:
-      2DAW: 2DAW
-      DEFAULT_BRANCH: "nodejs_environment_job"
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+     mascot: Mona
+     super_duper_var: totally_awesome
+    
     steps:
-      - name: hello
-        uses: adeloyedeji/github-actions-hello@v1.0
-        with:
-          who-to-greet: echo 'Hi ${{ env.2DAW }}'
+      - run: echo 'Hi ${{ env.mascot }}'  # Hi Mona
+      - run: echo 'Hi ${{ env.mascot }}'  # Hi Octocat
+        env:
+          mascot: Octocat
+
+    
+  
