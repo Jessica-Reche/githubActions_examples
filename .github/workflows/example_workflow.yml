@@ -32,7 +32,7 @@ jobs:
           name: build
       - name: Deploy React App
       #desplegar los artefactos descargados en rurge
-        uses: dswistowski/surge-sh-action@v2
+        uses: dswistowski/surge-sh-action@v1
         with:
           domain: ${{ secrets.surge_domain }}
           project: '.'
