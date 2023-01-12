@@ -1,6 +1,9 @@
 name: main_workflow
 on: [push]
-
+env:
+ 2DAW: 2DAW
+ super_duper_var: totally_awesome
+ 
 jobs:
   linter-execution: #job
     runs-on: ubuntu-latest
@@ -43,8 +46,7 @@ jobs:
 
   environment_test_execution: #job
     runs-on: ubuntu-latest
-    env:
-     2DAW: 2DAW
+   
     
     steps:
     # - name: hello
