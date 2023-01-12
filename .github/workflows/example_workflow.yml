@@ -33,5 +33,5 @@ jobs:
       - name: Deploy React App
         uses: dswistowski/surge-sh-action@v1 
         with:
-           domain: ${{ secrets.SURGE_DOMAIN }}
+           domain: 'jessica-2daw-despliegues.surge.sh'
            token: ${{ secrets.SURGE_TOKEN }}
