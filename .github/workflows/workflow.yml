@@ -45,7 +45,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
      DAW: 2DAW
-     super_duper_var: totally_awesome
     
     steps:
       - name: hello
