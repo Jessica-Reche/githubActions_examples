@@ -39,5 +39,5 @@ jobs:
           domain: ${{ secrets.SURGE_DOMAIN }}
           project: ./build
  
-      - name: Start web server
+      - name: Start web server 
         run: npm install && npm start
