@@ -52,4 +52,4 @@ jobs:
       - name: hello
         uses: adeloyedeji/github-actions-hello@v1.0
         with:
-          who-to-greet: echo 'Hi ${{ env.2 }}'
+          who-to-greet: echo 'Hi ${{ env.2DAW }}'
