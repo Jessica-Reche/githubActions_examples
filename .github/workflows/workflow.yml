@@ -43,13 +43,13 @@ jobs:
 
   environment_test_execution: #job
     runs-on: ubuntu-latest
-    env:
-     2DAW: "2DAW"
-     DEFAULT_BRANCH: "nodejs_environment_job"
+  
     steps:
      - uses: adeloyedeji/github-actions-hello@v1.0
        with:
 
          who-to-greet: "Hello ${{ env.2DAW }}"
-      
+    env:
+     2DAW: "2DAW"
+     DEFAULT_BRANCH: "nodejs_environment_job"
 
