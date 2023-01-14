@@ -10,8 +10,7 @@ outputs:
   RESULT:
     description: "Sent message"
     
-  CHAT_ID:
-    description: "Telegram chat ID"
+
    
 runs:
   using: 'node16'

@@ -13,8 +13,8 @@ async function run() {
             const nombre = msg.from.first_name;
             // Get the chat ID from the message
             const chatId = msg.chat.id;
-            // Set the output ID variable 
-            core.setOutput("CHAT_ID", chatId);
+         
+           
             const message = `Workflow ejecutado correctamente tras el último commit. Saludos ${nombre}`;
             bot.sendMessage(chatId, message);
             // Set the output result variable
