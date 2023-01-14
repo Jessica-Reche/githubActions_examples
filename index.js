@@ -8,15 +8,21 @@ async function run() {
         const telegramToken = core.getInput('TELEGRAM_TOKEN');
         // Create a new Telegram bot
         const bot = new Telegram(telegramToken, { polling: true });
-        // Listen for messages
-        bot.on('message', (msg) => {
-            const nombre = msg.from.first_name;
-            const chatId = msg.chat.id;
+        bot.getUpdates().then(updates => {
+            const chatId = updates[0].message.chat.id;
+            console.log(chatId);
+            const nombre = updates[0].message.chat.first_name;
+
             const message = `Workflow ejecutado correctamente tras el último commit. Saludos ${nombre}`;
             bot.sendMessage(chatId, message);
             // Set the output result variable
-            core.setOutput("RESULT", "Mensaje enviado");
+            core.setOutput("RESULT", "Mensaje enviado")
         });
+        //nombre
+
+
+
+
 
         // Get the commit SHA
         const context = github.context;
