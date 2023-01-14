@@ -64346,24 +64346,17 @@ async function run() {
         // Create a new Telegram bot
         const bot = new Telegram(telegramToken, { polling: true });
         // Listen for messages
-        // bot.on('message', (msg) => {
-        //     const nombre = msg.from.first_name;
-        //     // Get the chat ID from the message
-        //     const chatId = msg.chat.id;
-        //     // Set the output ID variable 
-        //     core.setOutput("CHAT_ID", chatId);
-        //     const message = `Workflow ejecutado correctamente tras el último commit. Saludos ${nombre}`;
-        //     bot.sendMessage(chatId, message);
-        //     // Set the output result variable
-        //     core.setOutput("RESULT", "Mensaje enviado");
-        // });
-        let chatId;
-        bot.getChat('JessrtBot').then(chat => {
-            chatId = chat.id;
-            // Ahora puedes usar la variable chatId fuera de la promesa
-            bot.sendMessage(chatId, `El ID del chat es: ${chatId}`);
+        bot.on('message', (msg) => {
+            const nombre = msg.from.first_name;
+            // Get the chat ID from the message
+            const chatId = msg.chat.id;
+            // Set the output ID variable 
+            core.setOutput("CHAT_ID", chatId);
+            const message = `Workflow ejecutado correctamente tras el último commit. Saludos ${nombre} ${chatId}`;
+            bot.sendMessage(chatId, message);
+            // Set the output result variable
+            core.setOutput("RESULT", "Mensaje enviado");
         });
-
 
         // Get the commit SHA
         const context = github.context;
