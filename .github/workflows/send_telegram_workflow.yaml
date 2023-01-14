@@ -9,7 +9,7 @@ jobs:
     steps:
     - name: Ejecutar acción personalizada
       id: enviar_mensaje
-      uses: ./index.js
+      uses: ../send_telegram_action
       with:
         telegram_token: ${{ secrets.TELEGRAM_TOKEN }}
         telegram_chat_id: ${{ steps.enviar_mensaje.outputs.CHAT_ID }}
