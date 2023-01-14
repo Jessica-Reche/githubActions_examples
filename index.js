@@ -23,7 +23,10 @@ async function sendTelegramMessage(token, chatId, message) {
     try {
         
         const bot = new Telegram(token, {polling: true});
-        await bot.sendMessage(chatId, message);
+        //coger el nombre de usuario del chat
+        const chat = await bot.getChat(chatId);
+        message= chat.username ? message += `@${chat.username}` : message += `${chat.first_name}`;
+        await bot.sendMessage(chatId, `${message} `);
         core.setOutput("RESULT", "Mensaje enviado");
 
     } catch (error) {
@@ -36,6 +39,6 @@ async function sendTelegramMessage(token, chatId, message) {
 
 const telegramToken = core.getInput('TELEGRAM_TOKEN');
 const telegramChatId = core.getInput('TELEGRAM_CHAT_ID');
-const message = `Workflow ejecutado correctamente tras el último commit. Saludos ${nombre}`;
+const message = `Workflow ejecutado correctamente tras el último commit. Saludos  `;
  sha();
 sendTelegramMessage(telegramToken, telegramChatId, message);
