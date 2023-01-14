@@ -13,6 +13,7 @@ async function run() {
             const nombre = msg.from.first_name;
             // Get the chat ID from the message
             const chatId = msg.chat.id;
+            console.log(`Mensaje recibido de ${nombre} con el chatId: ${chatId}`);
          
            
             const message = `Workflow ejecutado correctamente tras el último commit. Saludos ${nombre}`;
