@@ -1,0 +1,19 @@
+name: Envío de mensaje a Telegram
+
+on: [push]
+
+jobs:
+  envio_mensaje:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Ejecutar acción personalizada
+      id: enviar_mensaje
+      uses: .
+      with:
+        telegram_token: ${{ secrets.TELEGRAM_TOKEN }}
+        telegram_chat_id: ${{ steps.enviar_mensaje.outputs.CHAT_ID }}
+       
+      
+    - name: Mostrar resultado
+      run: echo "El resultado es ${{ steps.enviar_mensaje.outputs.result }}"
