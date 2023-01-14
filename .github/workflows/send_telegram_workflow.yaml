@@ -13,8 +13,8 @@ jobs:
       uses: ./ # Usar una acción en el mismo repositorio
 
       with:
-        telegram_token: ${{ secrets.TELEGRAM_TOKEN }}
-        telegram_chat_id: ${{ steps.enviar_mensaje.outputs.CHAT_ID }}
+         TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+         CHAT_ID: ${{ steps.enviar_mensaje.outputs.CHAT_ID }}
        
       
     - name: Mostrar resultado
