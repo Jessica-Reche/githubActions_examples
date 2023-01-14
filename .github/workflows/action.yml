@@ -1,0 +1,21 @@
+name: "Send Telegram message"
+description: "Send message to Telegram"
+author: "Jessica"
+inputs:
+  telegramToken:
+    description: "Telegram token"
+    required: true
+  chatId:
+    description: "Telegram chat ID"
+    required: true
+
+outputs:
+  message:
+    description: "Sent message"
+    
+  CHAT_ID:
+    description: "Telegram chat ID"
+   
+runs:
+  using: 'node16'
+  main: 'dist/index.js'

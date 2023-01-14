@@ -11,6 +11,7 @@ jobs:
     - name: Ejecutar acción personalizada
       id: enviar_mensaje
       uses: ./
+
       with:
         telegram_token: ${{ secrets.TELEGRAM_TOKEN }}
         telegram_chat_id: ${{ steps.enviar_mensaje.outputs.CHAT_ID }}
