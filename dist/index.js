@@ -64336,41 +64336,53 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 const Telegram = __nccwpck_require__(633);
-const core = __nccwpck_require__(2186);
+const {core,setFailed } = __nccwpck_require__(2186);
 const github = __nccwpck_require__(5438);
+let chatId;
 
-async function run() {
-    try {
-        // Get the Telegram token from the input
-        const telegramToken = core.getInput('TELEGRAM_TOKEN');
-        // Create a new Telegram bot
-        const bot = new Telegram(telegramToken, { polling: true });
-        // Listen for messages
-        bot.on('message', (msg) => {
-            const nombre = msg.from.first_name;
-            // Get the chat ID from the message
-            const chatId = msg.chat.id;
-         
-           
-            const message = `Workflow ejecutado correctamente tras el último commit. Saludos ${nombre}`;
-            bot.sendMessage(chatId, message);
-            // Set the output result variable
-            core.setOutput("RESULT", "Mensaje enviado");
-        });
+//get the chat id from the bot
 
-        // Get the commit SHA
-        const context = github.context;
-        const sha = context.sha;
-        const repo = context.repo.repo;
-        const owner = context.repo.owner;
-        console.log(`El último commit en el repositorio ${repo} de ${owner} tiene el sha: ${sha}`);
-
-    } catch (error) {
-        core.setFailed(error.message);
-    }
+async function getChatId() {
+    const chat = await bot.getChat('JessrtBot');
+   return chatId = chat.id;
+    // Ahora puedes usar la variable chatId fuera de la promesa
+    
 }
 
-run();
+
+
+
+
+
+async function sendTelegramMessage(telegramToken, chatId, message) {
+    try {
+        // Get the commit SHA
+         const context = github.context;
+         const sha = context.sha;
+         const repo = context.repo.repo;
+         const owner = context.repo.owner;
+         console.log(`El último commit en el repositorio ${repo} de ${owner} tiene el sha: ${sha} y el id del chat es: ${chatId}`);
+
+         const bot = new Telegram(telegramToken, {polling: true});
+         await bot.sendMessage(chatId, message);
+         core.setOutput("RESULT", "Mensaje enviado")
+       
+
+    } catch (error) {
+      setFailed(error.message);
+    }
+  }
+
+//get the chat id from getChat()
+
+
+
+
+
+const telegramToken = core.getInput('TELEGRAM_TOKEN');
+const message = `Workflow ejecutado correctamente tras el último commit. Saludos ${nombre} y ${chatId}`;
+
+sendTelegramMessage(telegramToken, telegramChatId, message);
 
 })();
 
