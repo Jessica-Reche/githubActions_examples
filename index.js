@@ -2,17 +2,19 @@ const Telegram = require('node-telegram-bot-api');
 const core = require('@actions/core');
 const github = require('@actions/github');
 let chatId;
+
+// Get the Telegram token from the input
+const telegramToken = core.getInput('TELEGRAM_TOKEN');
+// Create a new Telegram bot
+const bot = new Telegram(telegramToken, { polling: true });
 bot.getChat('JessrtBot').then(chat => {
     chatId = chat.id;
     // Ahora puedes usar la variable chatId fuera de la promesa
-   
+
 });
-async function run() {
+async function run(bot) {
     try {
-        // Get the Telegram token from the input
-        const telegramToken = core.getInput('TELEGRAM_TOKEN');
-        // Create a new Telegram bot
-        const bot = new Telegram(telegramToken, { polling: true });
+
         // Listen for messages
         bot.on('message', (msg) => {
             const nombre = msg.from.first_name;
