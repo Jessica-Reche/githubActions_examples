@@ -32,7 +32,7 @@ bot.getChat('JessBot').then(chat => {
     // Enviar el ID del chat en el chat
     bot.sendMessage(chatId, `El ID del chat es: ${chatId}`);
     const telegramToken = core.getInput('TELEGRAM_TOKEN');
-    const message = `Workflow ejecutado correctamente tras el último commit. Saludos ${nombre}`;
+    const message = `Workflow ejecutado correctamente tras el último commit. Saludos ${nombre}  ${chatId}`;
 
     sendTelegramMessage(telegramToken, telegramChatId, message);
 });
