@@ -64336,42 +64336,46 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 const Telegram = __nccwpck_require__(633);
-const core = __nccwpck_require__(2186);
+const {core ,setFailed } = __nccwpck_require__(2186);
 const github = __nccwpck_require__(5438);
 
-async function run() {
+// Get the commit SHA
+ function sha() {
     try {
-        // Get the Telegram token from the input
-        const telegramToken = core.getInput('TELEGRAM_TOKEN');
-        // Create a new Telegram bot
-        const bot = new Telegram(telegramToken, { polling: true });
-        // Listen for messages
-        bot.on('message', (msg) => {
-            const nombre = msg.from.first_name;
-            // Get the chat ID from the message
-            const chatId = msg.chat.id;
-            // Set the output ID variable 
-            core.setOutput("CHAT_ID", chatId);
-            const message = `Workflow ejecutado correctamente tras el último commit. Saludos ${nombre} ${chatId}`;
-            bot.sendMessage(chatId, message);
-            // Set the output result variable
-            core.setOutput("RESULT", "Mensaje enviado");
-        });
-
-        // Get the commit SHA
+        
         const context = github.context;
         const sha = context.sha;
         const repo = context.repo.repo;
         const owner = context.repo.owner;
-        console.log(`El último commit en el repositorio ${repo} de ${owner} tiene el sha: ${sha}`);
+        msgCommit = `El último commit en el repositorio ${repo} de ${owner} tiene el sha: ${sha}`;
+        console.log(msgCommit);
+       
 
     } catch (error) {
-        core.setFailed(error.message);
+        setFailed(error.message);
     }
 }
+// Send a message to a Telegram chat
+async function sendTelegramMessage(token, chatId, message) {
+    try {
+        
+        const bot = new Telegram(token, {polling: true});
+        await bot.sendMessage(chatId, message);
+        core.setOutput("RESULT", "Mensaje enviado");
 
-run();
+    } catch (error) {
+      setFailed(error.message);
+    }
+  }
 
+
+
+
+const telegramToken = core.getInput('TELEGRAM_TOKEN');
+const telegramChatId = core.getInput('TELEGRAM_CHAT_ID');
+const message = `Workflow ejecutado correctamente tras el último commit. Saludos ${nombre}`;
+ sha();
+sendTelegramMessage(telegramToken, telegramChatId, message);
 })();
 
 module.exports = __webpack_exports__;

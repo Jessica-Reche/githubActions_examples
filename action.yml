@@ -5,6 +5,9 @@ inputs:
   TELEGRAM_TOKEN:
     description: "Telegram token"
     required: true
+  TELEGRAM_CHAT_ID: 
+    description: "Telegram chat id"
+    required: true
 
 outputs:
   RESULT:
