@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - uses: actions/checkout@v2
     - name: Ejecutar acción personalizada
       id: enviar_mensaje
       uses: ./send_telegram_action
