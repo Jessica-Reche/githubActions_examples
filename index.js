@@ -2,6 +2,10 @@ const Telegram = require('node-telegram-bot-api');
 const {core ,setFailed } = require('@actions/core');
 const github = require('@actions/github');
 
+const telegramToken = core.getInput('TELEGRAM_TOKEN');
+const telegramChatId = core.getInput('TELEGRAM_CHAT_ID');
+const message = `Workflow ejecutado correctamente tras el último commit. Saludos  `;
+
 // Get the commit SHA
  function sha() {
     try {
@@ -37,8 +41,6 @@ async function sendTelegramMessage(token, chatId, message) {
 
 
 
-const telegramToken = core.getInput('TELEGRAM_TOKEN');
-const telegramChatId = core.getInput('TELEGRAM_CHAT_ID');
-const message = `Workflow ejecutado correctamente tras el último commit. Saludos  `;
+
  sha();
 sendTelegramMessage(telegramToken, telegramChatId, message);
