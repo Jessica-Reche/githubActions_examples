@@ -6,7 +6,7 @@ let chatId;
 //get the chat id from the bot
 
 async function getChatId() {
-    const chat = await bot.getChat('MiBot');
+    const chat = await bot.getChat('https://t.me/JessrtBot');
    return chatId = chat.id;
     // Ahora puedes usar la variable chatId fuera de la promesa
     
