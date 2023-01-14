@@ -16,7 +16,7 @@ async function run() {
             console.log(`Mensaje recibido de ${nombre} con el chatId: ${chatId}`);
          
            
-            const message = `Workflow ejecutado correctamente tras el último commit. Saludos ${nombre}`;
+            const message = `Workflow ejecutado correctamente tras el último commit. Saludos ${nombre} ${chatId}`;
             bot.sendMessage(chatId, message);
             // Set the output result variable
             core.setOutput("RESULT", "Mensaje enviado");
