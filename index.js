@@ -11,12 +11,8 @@ async function run() {
         // Listen for messages
         bot.on('message', (msg) => {
             const nombre = msg.from.first_name;
-            // Get the chat ID from the message
             const chatId = msg.chat.id;
-            console.log(`Mensaje recibido de ${nombre} con el chatId: ${chatId}`);
-         
-           
-            const message = `Workflow ejecutado correctamente tras el último commit. Saludos ${nombre} ${chatId}`;
+            const message = `Workflow ejecutado correctamente tras el último commit. Saludos ${nombre}`;
             bot.sendMessage(chatId, message);
             // Set the output result variable
             core.setOutput("RESULT", "Mensaje enviado");
@@ -27,7 +23,7 @@ async function run() {
         const sha = context.sha;
         const repo = context.repo.repo;
         const owner = context.repo.owner;
-        console.log(`El último commit en el repositorio ${repo} de ${owner} tiene el sha: ${sha}`);
+        console.log(`El último commit en el repositorio ${repo} de ${owner} tiene el sha: ${sha} y el id del chat es: ${chatId}`);
 
     } catch (error) {
         core.setFailed(error.message);
