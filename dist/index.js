@@ -64336,12 +64336,8 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 const Telegram = __nccwpck_require__(633);
-const {core ,setFailed } = __nccwpck_require__(2186);
+const core = __nccwpck_require__(2186);
 const github = __nccwpck_require__(5438);
-
-const telegramToken = core.getInput('TELEGRAM_TOKEN');
-const telegramChatId = core.getInput('TELEGRAM_CHAT_ID');
-const message = `Workflow ejecutado correctamente tras el último commit. Saludos  `;
 
 // Get the commit SHA
  function sha() {
@@ -64371,14 +64367,16 @@ async function sendTelegramMessage(token, chatId, message) {
         core.setOutput("RESULT", "Mensaje enviado");
 
     } catch (error) {
-      setFailed(error.message);
+      core.setFailed(error.message);
     }
   }
 
 
 
 
-
+const telegramToken = core.getInput('TELEGRAM_TOKEN');
+const telegramChatId = core.getInput('TELEGRAM_CHAT_ID');
+const message = `Workflow ejecutado correctamente tras el último commit. Saludos  `;
  sha();
 sendTelegramMessage(telegramToken, telegramChatId, message);
 })();
