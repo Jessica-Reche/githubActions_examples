@@ -16,7 +16,7 @@ const github = require('@actions/github');
 
     } catch (error) {
         setFailed(error.message);
-    }
+    } 
 }
 // Send a message to a Telegram chat
 async function sendTelegramMessage(token, chatId, message) {
