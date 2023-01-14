@@ -10,7 +10,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Ejecutar acción personalizada
       id: enviar_mensaje
-      uses: ./index.js
+      uses: ./
       with:
         telegram_token: ${{ secrets.TELEGRAM_TOKEN }}
         telegram_chat_id: ${{ steps.enviar_mensaje.outputs.CHAT_ID }}
