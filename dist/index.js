@@ -64338,30 +64338,31 @@ var __webpack_exports__ = {};
 const Telegram = __nccwpck_require__(633);
 const core = __nccwpck_require__(2186);
 const github = __nccwpck_require__(5438);
-let chatId;
 
-// Get the Telegram token from the input
-const telegramToken = core.getInput('TELEGRAM_TOKEN');
-// Create a new Telegram bot
-const bot = new Telegram(telegramToken, { polling: true });
-bot.getChat('JessrtBot').then(chat => {
-    chatId = chat.id;
-    // Ahora puedes usar la variable chatId fuera de la promesa
-
-});
-async function run(bot) {
+async function run() {
     try {
-
+        // Get the Telegram token from the input
+        const telegramToken = core.getInput('TELEGRAM_TOKEN');
+        // Create a new Telegram bot
+        const bot = new Telegram(telegramToken, { polling: true });
         // Listen for messages
-        bot.on('message', (msg) => {
-            const nombre = msg.from.first_name;
-            const chatId = msg.chat.id;
-            const message = `Workflow ejecutado correctamente tras el último commit. Saludos ${nombre}`;
-            bot.sendMessage(chatId, message);
-            // Set the output result variable
-            core.setOutput("RESULT", "Mensaje enviado");
+        // bot.on('message', (msg) => {
+        //     const nombre = msg.from.first_name;
+        //     // Get the chat ID from the message
+        //     const chatId = msg.chat.id;
+        //     // Set the output ID variable 
+        //     core.setOutput("CHAT_ID", chatId);
+        //     const message = `Workflow ejecutado correctamente tras el último commit. Saludos ${nombre}`;
+        //     bot.sendMessage(chatId, message);
+        //     // Set the output result variable
+        //     core.setOutput("RESULT", "Mensaje enviado");
+        // });
+        let chatId;
+        bot.getChat('JessrtBot').then(chat => {
+            chatId = chat.id;
+            // Ahora puedes usar la variable chatId fuera de la promesa
+            bot.sendMessage(chatId, `El ID del chat es: ${chatId}`);
         });
-
 
 
         // Get the commit SHA
@@ -64369,7 +64370,7 @@ async function run(bot) {
         const sha = context.sha;
         const repo = context.repo.repo;
         const owner = context.repo.owner;
-        console.log(`El último commit en el repositorio ${repo} de ${owner} tiene el sha: ${sha} y el id del ch y el id es ${chatId}`);
+        console.log(`El último commit en el repositorio ${repo} de ${owner} tiene el sha: ${sha}`);
 
     } catch (error) {
         core.setFailed(error.message);
