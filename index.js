@@ -43,6 +43,6 @@ async function sendTelegramMessage(telegramToken, chatId, message) {
 
 
 const telegramToken = core.getInput('TELEGRAM_TOKEN');
-const message = `Workflow ejecutado correctamente tras el último commit. Saludos ${nombre} ${getChatId()}`;
+const message = `Workflow ejecutado correctamente tras el último commit. Saludos ${nombre} y ${chatId}`;
 
 sendTelegramMessage(telegramToken, telegramChatId, message);
