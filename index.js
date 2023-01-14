@@ -18,7 +18,7 @@ async function run() {
             const message = `Workflow ejecutado correctamente tras el último commit. Saludos ${nombre}`;
             bot.sendMessage(chatId, message);
             // Set the output result variable
-            core.setOutput("result", "Mensaje enviado");
+            core.setOutput("RESULT", "Mensaje enviado");
         });
 
         // Get the commit SHA

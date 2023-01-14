@@ -2,15 +2,12 @@ name: "Send Telegram message"
 description: "Send message to Telegram"
 author: "Jessica"
 inputs:
-  telegramToken:
+  TELEGRAM_TOKEN:
     description: "Telegram token"
-    required: true
-  chatId:
-    description: "Telegram chat ID"
     required: true
 
 outputs:
-  message:
+  RESULT:
     description: "Sent message"
     
   CHAT_ID:

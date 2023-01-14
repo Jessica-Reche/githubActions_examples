@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Jessica-Reche/githubActions_examples#readme",
   "dependencies": {
+    "@actions/core": "^1.10.0",
     "@actions/github": "^5.1.1",
     "node-telegram-bot-api": "^0.61.0"
   }

@@ -18,4 +18,4 @@ jobs:
        
       
     - name: Mostrar resultado
-      run: echo "El resultado es ${{ steps.enviar_mensaje.outputs.result }}"
+      run: echo "El resultado es ${{ steps.enviar_mensaje.outputs.RESULT }}"
