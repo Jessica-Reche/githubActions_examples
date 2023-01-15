@@ -18,7 +18,6 @@ jobs:
   
        
       
-
-    - name: Finalizar ejecución
-      if: ${{ steps.enviar_mensaje.outputs.FINAL_RESULT == 'Mensaje enviado' }}
-      run: exit 0
+    - name: FINAL_RESULT
+      run: echo "El resultado es ${{ steps.enviar_mensaje.outputs.RESULT }}"
+    - run: exit 0
