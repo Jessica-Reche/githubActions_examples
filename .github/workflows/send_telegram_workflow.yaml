@@ -19,5 +19,5 @@ jobs:
        
       
     - name: FINAL_RESULT
-      run: echo "El resultado es ${{ steps.enviar_mensaje.outputs.RESULT }}"
+      run: echo "El resultado es ${{ steps.enviar_mensaje.outputs.FINAL_RESULT }}"
     - run: exit 0
