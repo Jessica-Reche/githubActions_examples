@@ -24,9 +24,10 @@ async function sendTelegramMessage(token, message) {
         
         const bot = new Telegram(token, {polling: true});
         //get name of chat
-        const chat = await bot.getChat('@JessrtBot');
+        const id = await bot.getChatIdByUsername('@JessrtBot');
+        const chat = await bot.getChat(id);
         message= chat.username ? message += `@${chat.username}` : message += `${chat.first_name}`;
-        await bot.sendMessage(chat.id, `${message} `);
+        await bot.sendMessage(id, `${message} `);
         msgSend = "Mensaje enviado";
         console.log(msgSend);
         core.setOutput("FINAL_RESULT", msgSend);
