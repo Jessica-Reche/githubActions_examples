@@ -64356,17 +64356,15 @@ const github = __nccwpck_require__(5438);
     } 
 }
 // Send a message to a Telegram chat
-async function sendTelegramMessage(token, message) {
+async function sendTelegramMessage(token, chatId, message) {
     try {
         
         const bot = new Telegram(token, {polling: true});
         //get name of chat
-        const chat = await bot.getChat('@Jessiret');
+        const chat = await bot.getChat(chatId);
         message= chat.username ? message += `@${chat.username}` : message += `${chat.first_name}`;
-        await bot.sendMessage(chat.id, `${message} `);
-        msgSend = "Mensaje enviado";
-        console.log(msgSend);
-        core.setOutput("FINAL_RESULT", msgSend);
+        await bot.sendMessage(chatId, `${message} `);
+        core.setOutput("FINAL_RESULT", "Mensaje enviado");
         //stop bot and exit
        await bot.stopPolling();
        await process.exit(0);
@@ -64381,10 +64379,10 @@ async function sendTelegramMessage(token, message) {
 
 
 const telegramToken = core.getInput('TELEGRAM_TOKEN');
-//const telegramChatId = core.getInput('TELEGRAM_CHAT_ID');
+const telegramChatId = core.getInput('TELEGRAM_CHAT_ID');
 const message = `Workflow ejecutado correctamente tras el último commit. Saludos  `;
  sha();
-sendTelegramMessage(telegramToken, message);
+sendTelegramMessage(telegramToken, telegramChatId, message);
 })();
 
 module.exports = __webpack_exports__;
