@@ -30,7 +30,7 @@ async function sendTelegramMessage(token, chatId, message) {
         core.setOutput("FINAL_RESULT", "Mensaje enviado" );
         //stop bot and exit
         await bot.stopPolling();
-        process.exit(0);
+        process.exit(0); 
 
 
     } catch (error) {
