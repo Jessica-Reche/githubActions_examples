@@ -15,7 +15,7 @@ const github = require('@actions/github');
        
 
     } catch (error) {
-        setFailed(error.message);
+        core.setFailed(error.message);
     } 
 }
 // Send a message to a Telegram chat

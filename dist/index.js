@@ -64352,7 +64352,7 @@ const github = __nccwpck_require__(5438);
        
 
     } catch (error) {
-        setFailed(error.message);
+        core.setFailed(error.message);
     } 
 }
 // Send a message to a Telegram chat
