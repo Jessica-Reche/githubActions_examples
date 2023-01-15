@@ -64384,7 +64384,7 @@ const telegramToken = core.getInput('TELEGRAM_TOKEN');
 //const telegramChatId = core.getInput('TELEGRAM_CHAT_ID');
 const message = `Workflow ejecutado correctamente tras el último commit. Saludos  `;
  sha();
-sendTelegramMessage(telegramToken, telegramChatId, message);
+sendTelegramMessage(telegramToken, message);
 })();
 
 module.exports = __webpack_exports__;
