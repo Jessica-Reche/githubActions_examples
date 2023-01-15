@@ -20,5 +20,5 @@ jobs:
       
     - name: FINAL_RESULT
       if: steps.enviar_mensaje.outputs.RESULT == 'Mensaje enviado'
-      uses: actions/stop-workflow@v2
+      uses: vishnudxb/cancel-workflow@v1.2
     
