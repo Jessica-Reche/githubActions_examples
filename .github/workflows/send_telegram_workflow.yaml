@@ -19,6 +19,6 @@ jobs:
        
       
  
-    - name: Finalizar
+    - name: FINAL_RESULT
       if: steps.enviar_mensaje.outputs.RESULT == 'Mensaje enviado'
       run: exit 0 

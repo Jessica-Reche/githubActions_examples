@@ -10,7 +10,7 @@ inputs:
     required: true
 
 outputs:
-  RESULT:
+  FINAL_RESULT:
     description: "Sent message"
     
 
