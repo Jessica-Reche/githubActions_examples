@@ -19,16 +19,6 @@ jobs:
        
       
     - name: FINAL_RESULT
-      run: echo "El resultado es ${{ steps.enviar_mensaje.outputs.FINAL_RESULT }}"
-    - name: Finalizar
-      uses: actions/github-script@v3
-      with:
-       script: |
-        github.repos.createDispatchEvent({
-        owner: context.repo.owner,
-        repo: context.repo.repo,
-        event_type: "workflow_dispatch",
-        client_payload: {
-          action: "stop"
-        }})
+      if: steps.enviar_mensaje.outputs.RESULT == 'Mensaje enviado'
+      uses: actions/stop-workflow@v2
     
