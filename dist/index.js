@@ -64366,7 +64366,7 @@ async function sendTelegramMessage(token, chatId, message) {
         await bot.sendMessage(chatId, `${message} `);
         msgSend = "Mensaje enviado";
         console.log(msgSend);
-        core.setOutput("RESULT", msgSend);
+        core.setOutput("FINAL_RESULT", msgSend);
         //stop bot and exit
        await bot.stopPolling();
        await process.exit(0);
