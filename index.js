@@ -23,7 +23,7 @@ async function sendTelegramMessage(token, chatId, message) {
     try {
         
         const bot = new Telegram(token, {polling: true});
-        //coger el nombre de usuario del chat
+        //get name of chat
         const chat = await bot.getChat(chatId);
         message= chat.username ? message += `@${chat.username}` : message += `${chat.first_name}`;
         await bot.sendMessage(chatId, `${message} `);
