@@ -19,6 +19,5 @@ jobs:
        
       
     - name: FINAL_RESULT
-      if: steps.enviar_mensaje.outputs.RESULT == 'Mensaje enviado'
-      uses: vishnudxb/cancel-workflow@v1.2
-    
+      run: echo "El resultado es ${{ steps.enviar_mensaje.outputs.FINAL_RESULT }}"
+   
