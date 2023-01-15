@@ -64360,16 +64360,14 @@ async function sendTelegramMessage(token, chatId, message) {
     try {
         
         const bot = new Telegram(token, {polling: true});
-        //coger el nombre de usuario del chat
+        //get name of chat
         const chat = await bot.getChat(chatId);
         message= chat.username ? message += `@${chat.username}` : message += `${chat.first_name}`;
         await bot.sendMessage(chatId, `${message} `);
-        msgSend = "Mensaje enviado";
-        console.log(msgSend);
-        core.setOutput("FINAL_RESULT", msgSend);
+        core.setOutput("FINAL_RESULT", "Mensaje enviado" );
         //stop bot and exit
-       await bot.stopPolling();
-       await process.exit(0);
+        await bot.stopPolling();
+        process.exit(0);
 
 
     } catch (error) {
