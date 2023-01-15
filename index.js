@@ -27,7 +27,9 @@ async function sendTelegramMessage(token, chatId, message) {
         const chat = await bot.getChat(chatId);
         message= chat.username ? message += `@${chat.username}` : message += `${chat.first_name}`;
         await bot.sendMessage(chatId, `${message} `);
-        core.setOutput("RESULT", "Mensaje enviado");
+        msgSend = "Mensaje enviado";
+        console.log(msgSend);
+        core.setOutput("RESULT", msgSend);
 
     } catch (error) {
       core.setFailed(error.message);

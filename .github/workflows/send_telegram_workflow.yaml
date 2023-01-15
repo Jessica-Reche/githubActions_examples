@@ -18,5 +18,7 @@ jobs:
   
        
       
-    - name: Mostrar resultado
-      run: echo "El resultado es ${{ steps.enviar_mensaje.outputs.RESULT }}"
+ 
+    - name: Finalizar
+      if: steps.enviar_mensaje.outputs.RESULT == 'Mensaje enviado'
+      run: exit 0 
