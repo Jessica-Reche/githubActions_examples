@@ -19,18 +19,20 @@ const github = require('@actions/github');
     } 
 }
 // Send a message to a Telegram chat
-async function sendTelegramMessage(token, chatId, message) {
+async function sendTelegramMessage(token, message) {
     try {
         
         const bot = new Telegram(token, {polling: true});
         //get name of chat
-        const chat = await bot.getChat(chatId);
+        const chat = await bot.getChat('@JessrtBot');
         message= chat.username ? message += `@${chat.username}` : message += `${chat.first_name}`;
-        await bot.sendMessage(chatId, `${message} `);
-        core.setOutput("FINAL_RESULT", "Mensaje enviado" );
+        await bot.sendMessage(chat.id, `${message} `);
+        msgSend = "Mensaje enviado";
+        console.log(msgSend);
+        core.setOutput("FINAL_RESULT", msgSend);
         //stop bot and exit
-        await bot.stopPolling();
-        process.exit(0); 
+       await bot.stopPolling();
+       await process.exit(0);
 
 
     } catch (error) {
@@ -42,7 +44,7 @@ async function sendTelegramMessage(token, chatId, message) {
 
 
 const telegramToken = core.getInput('TELEGRAM_TOKEN');
-const telegramChatId = core.getInput('TELEGRAM_CHAT_ID');
+//const telegramChatId = core.getInput('TELEGRAM_CHAT_ID');
 const message = `Workflow ejecutado correctamente tras el último commit. Saludos  `;
  sha();
 sendTelegramMessage(telegramToken, telegramChatId, message);
