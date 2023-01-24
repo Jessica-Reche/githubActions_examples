@@ -1,5 +1,5 @@
 const fs = require("fs");
-const meme = require("nodejs-meme-generator");
+const memegen = require("memegen");
 const core = require("@actions/core");
 
 async function run() {
@@ -13,12 +13,11 @@ async function run() {
     texto = frase_negativa;
   }
 
-  meme.generate("your_text", texto).then(url => {
+  memegen.generate(texto.split("\n")[0], texto.split("\n")[1]).then(url => {
     let readme = fs.readFileSync("readme.md", "utf-8");
     readme += `\n![meme](${url})`;
     fs.writeFileSync("readme.md", readme);
     console.log("Meme añadido al readme");
-    //Depende del resultado se ejecuta una cosa u otra
   });
 }
 
