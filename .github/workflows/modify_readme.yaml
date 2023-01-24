@@ -25,18 +25,22 @@ jobs:
           frase_positiva: "Los tests han funcionado y lo sabes"
           frase_negativa: "Los tests han fallado y lo sables"
           resultado_tests: ${{ job.ejecutar_tests.outputs.resultado_tests }}
+          TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB }}
          
 
           run: |
             npm install
             node index.js
+      
+
       - name: Commit and push
+       
         run: |
           git config  user.name  Jessica-Reche
           git config  user.email jessikareix20@gmail.com
           git add .
           git commit -m"Agregar meme al readme"
-          git push https://${{ secrets.TOKEN_GITHUB }}@github.com/Jessica-Reche/githubActions_examples.git
+          git push https://$TOKEN_GITHUB@github.com/Jessica-Reche/githubActions_examples.git
 
           
 
