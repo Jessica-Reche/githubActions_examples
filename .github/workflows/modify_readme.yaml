@@ -14,7 +14,6 @@ jobs:
         npm test
   agregar_meme:
     runs-on: ubuntu-latest
-    needs: ejecutar_tests
     steps:
     
     - name: Agregar meme al readme
@@ -22,7 +21,7 @@ jobs:
       with:
         frase_positiva: "Los tests han funcionado y lo sabes"
         frase_negativa: "Los tests han fallado y lo sables"
-        resultado_tests: ${{ needs.ejecutar_tests.result }}
+        resultado_tests: ${{ job.ejecutar_tests.outputs.resultado_tests }}
         name: Subir cambios a git
         run: |
           git config --global user.email "jessikareix20@gmail.com"
