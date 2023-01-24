@@ -19,3 +19,4 @@ describe('Custom action meme', () => {
     expect(fs.existsSync('readme.md')).toBe(true);
   });
 });
+
