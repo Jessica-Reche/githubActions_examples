@@ -13,7 +13,7 @@ jobs:
           npm install
           npm test
       - name: Guardar resultado de los tests
-        run: echo "::set-output name=resultado_tests::$TEST_RESULT"
+        run: echo "{name}={resultado_tests}" >> $TEST_RESULT
   agregar_meme:
     runs-on: ubuntu-latest
     steps:
