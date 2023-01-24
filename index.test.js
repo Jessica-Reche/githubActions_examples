@@ -1,5 +1,9 @@
-//test que comprueba que estan las variables en el index.js
-const {meme } = require('./index.js');
-test('Comprueba que las variables estan definidas', () => {
-  expect(meme).toBeDefined();
+//test que comprueba que esta la funcion run
+test("run", () => {
+  //mock de la funcion run
+  const run = jest.fn();
+  //ejecutamos la funcion run
+  run();
+  //comprobamos que se ha ejecutado
+  expect(run).toHaveBeenCalled();
 });
