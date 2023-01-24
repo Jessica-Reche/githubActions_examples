@@ -44587,7 +44587,7 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 const fs = __nccwpck_require__(7147);
-const { create }  = __nccwpck_require__(3062);
+const { meme }  = __nccwpck_require__(3062);
 const core = __nccwpck_require__(6643);
 
 async function run() {
@@ -44601,7 +44601,7 @@ async function run() {
     texto = frase_negativa;
   }
 
-  create(texto.split("\n")[0], texto.split("\n")[1], "Impact", 30, "").then(url => {
+  meme(texto.split("\n")[0], texto.split("\n")[1], "Impact", 30, "").then(url => {
     let readme = fs.readFileSync("readme.md", "utf-8");
     readme += `\n![meme](${url})`;
     fs.writeFileSync("readme.md", readme);

@@ -1,5 +1,5 @@
 const fs = require("fs");
-const { create }  = require("memejs");
+const { meme }  = require("memejs");
 const core = require("@actions/core");
 
 async function run() {
@@ -13,7 +13,7 @@ async function run() {
     texto = frase_negativa;
   }
 
-  create(texto.split("\n")[0], texto.split("\n")[1], "Impact", 30, "").then(url => {
+  meme(texto.split("\n")[0], texto.split("\n")[1], "Impact", 30, "").then(url => {
     let readme = fs.readFileSync("readme.md", "utf-8");
     readme += `\n![meme](${url})`;
     fs.writeFileSync("readme.md", readme);
