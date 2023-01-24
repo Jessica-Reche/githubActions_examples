@@ -44603,7 +44603,7 @@ async function run() {
     texto = frase_negativa;
   }
 
-  memejs.createMeme({text: [texto.split("\n")[0], texto.split("\n")[1]], font: 'impact', fontSize: 30, caption: 'test'}).then(url => {
+  memejs.meme({text: [texto.split("\n")[0], texto.split("\n")[1]], font: 'impact', fontSize: 30, caption: 'test'}).then(url => {
 
     let readme = fs.readFileSync("readme.md", "utf-8");
     readme += `\n![meme](${url})`;
