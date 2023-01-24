@@ -1,5 +1,7 @@
 const fs = require("fs");
-const memegen = require("memegen");
+const memejs = require("memejs");
+
+
 const core = require("@actions/core");
 
 async function run() {
@@ -13,7 +15,8 @@ async function run() {
     texto = frase_negativa;
   }
 
-  memegen.generate(texto.split("\n")[0], texto.split("\n")[1]).then(url => {
+  memejs.createMeme({text: [texto.split("\n")[0], texto.split("\n")[1]], font: 'impact', fontSize: 30, caption: 'test'}).then(url => {
+
     let readme = fs.readFileSync("readme.md", "utf-8");
     readme += `\n![meme](${url})`;
     fs.writeFileSync("readme.md", readme);

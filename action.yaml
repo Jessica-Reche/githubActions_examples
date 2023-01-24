@@ -14,10 +14,6 @@ inputs:
     description: "Resultado de los tests"
     required: true
 
-outputs:
-  meme_added:
-    description: "Meme añadido al readme"
-
 runs:
   using: 'node16'
   main: 'dist/index.js'

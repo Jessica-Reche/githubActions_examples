@@ -9,10 +9,10 @@ module.exports = eval("require")("@actions/core");
 
 /***/ }),
 
-/***/ 438:
+/***/ 484:
 /***/ ((module) => {
 
-module.exports = eval("require")("memegen");
+module.exports = eval("require")("memejs");
 
 
 /***/ }),
@@ -67,7 +67,9 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 const fs = __nccwpck_require__(147);
-const memegen = __nccwpck_require__(438);
+const memejs = __nccwpck_require__(484);
+
+
 const core = __nccwpck_require__(40);
 
 async function run() {
@@ -81,7 +83,8 @@ async function run() {
     texto = frase_negativa;
   }
 
-  memegen.generate(texto.split("\n")[0], texto.split("\n")[1]).then(url => {
+  memejs.createMeme({text: [texto.split("\n")[0], texto.split("\n")[1]], font: 'impact', fontSize: 30, caption: 'test'}).then(url => {
+
     let readme = fs.readFileSync("readme.md", "utf-8");
     readme += `\n![meme](${url})`;
     fs.writeFileSync("readme.md", readme);
