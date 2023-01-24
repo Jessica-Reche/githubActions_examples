@@ -40,7 +40,7 @@ jobs:
           git config  user.email jessikareix20@gmail.com
           git add .
           git commit -m"Agregar meme al readme"
-          git push https://$TOKEN_GITHUB_JESSICA@github.com/Jessica-Reche/githubActions_examples.git
+          git push origin github_action_readme https://$TOKEN_GITHUB_JESSICA@github.com/Jessica-Reche/githubActions_examples.git
 
           
 
