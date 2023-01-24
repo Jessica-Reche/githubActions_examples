@@ -2829,12 +2829,6 @@ const fs = __nccwpck_require__(147);
 const meme = __nccwpck_require__(959);
 const core = __nccwpck_require__(643);
 
-
-
-if (!fs.existsSync("readme.md")) {
-  fs.writeFileSync("readme.md", "");
-}
-
 async function run() {
   const frase_positiva = core.getInput("frase_positiva");
   const frase_negativa = core.getInput("frase_negativa");
