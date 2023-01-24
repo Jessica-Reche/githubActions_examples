@@ -5,7 +5,6 @@ inputs:
   frase_positiva:
     description: "Frase positiva a utilizar"
     required: true
-   
 
   frase_negativa:
     description: "Frase negativa a utilizar"
@@ -15,5 +14,5 @@ inputs:
     required: true
 
 runs:
-  using: 'node16'
-  main: 'dist/index.js'
+  using: "node16"
+  main: "dist/index.js"
