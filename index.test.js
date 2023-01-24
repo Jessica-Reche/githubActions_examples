@@ -1,6 +1,7 @@
 const fs = require('fs');
 const { run } = require('./index');
 
+
 describe('Custom action meme', () => {
   beforeEach(() => {
     if (fs.existsSync('readme.md')) {

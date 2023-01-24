@@ -1,6 +1,6 @@
 name: "custom-action-meme"
 description: "Agrega un meme al readme dependiendo del resultado de los tests"
-author: "Jessica"
+author: "Your Name"
 inputs:
   frase_positiva:
     description: "Frase positiva a utilizar"
@@ -15,9 +15,7 @@ inputs:
 outputs:
   meme_added:
     description: "Meme añadido al readme"
-    
 
-   
 runs:
   using: 'node16'
   main: 'dist/index.js'

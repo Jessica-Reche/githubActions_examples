@@ -1,24 +1,33 @@
-name: "custom-action-meme"
+name: "modify_readme"
 
 on: [push]
 
 jobs:
- ejecutar_tests:
+  ejecutar_tests:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-      with:
-       fetch-depth: 0
+    - name: Ejecutar tests
+      run: |
+        npm install
+        npm test
+  agregar_meme:
+    runs-on: ubuntu-latest
+    needs: ejecutar_tests
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
     - name: Agregar meme al readme
       uses: ./
       with:
         frase_positiva: "Los tests han funcionado y lo sabes"
-        frase_negativa: "Los tests han fallado y lo sabes"
-        resultado_tests: ${{ job.status }}
-
-    - name: Ejecutar tests
-      run: |
-        npm install jest
-        npm test 
+        frase_negativa: "Los tests han fallado y lo sables"
+        resultado_tests: ${{ needs.ejecutar_tests.result }}
+        name: Subir cambios a git
+        run: |
+          git config --global user.email "jessikareix20@gmail.com"
+          git config --global user.name "Jessica-Reche"
+          git add .
+          git commit -m "Agregar meme al readme"
+          git push
