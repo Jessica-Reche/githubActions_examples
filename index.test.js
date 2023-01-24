@@ -1,5 +1,4 @@
 const fs = require('fs');
-const nodeMemes = require('node-memes');
 const { run } = require('./index');
 
 describe('Custom action meme', () => {
