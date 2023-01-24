@@ -1,5 +1,5 @@
 const fs = require("fs");
-const memejs = require("memejs");
+const { meme }  = require("memejs");
 
 
 const core = require("@actions/core");
@@ -14,8 +14,12 @@ async function run() {
   } else {
     texto = frase_negativa;
   }
+  //si no existe el readme.md lo creamos
+  if (!fs.existsSync("readme.md")) {
+    fs.writeFileSync("readme.md", "# Memes de los tests");
+  }
 
-  memejs.meme({text: [texto.split("\n")[0], texto.split("\n")[1]], font: 'impact', fontSize: 30, caption: 'test'}).then(url => {
+  meme.meme({text: [texto.split("\n")[0], texto.split("\n")[1]], font: 'impact', fontSize: 30, caption: 'test'}).then(url => {
 
     let readme = fs.readFileSync("readme.md", "utf-8");
     readme += `\n![meme](${url})`;

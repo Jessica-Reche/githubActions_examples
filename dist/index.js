@@ -44587,7 +44587,7 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 const fs = __nccwpck_require__(7147);
-const memejs = __nccwpck_require__(3062);
+const { meme }  = __nccwpck_require__(3062);
 
 
 const core = __nccwpck_require__(6643);
@@ -44602,8 +44602,12 @@ async function run() {
   } else {
     texto = frase_negativa;
   }
+  //si no existe el readme.md lo creamos
+  if (!fs.existsSync("readme.md")) {
+    fs.writeFileSync("readme.md", "# Memes de los tests");
+  }
 
-  memejs.meme({text: [texto.split("\n")[0], texto.split("\n")[1]], font: 'impact', fontSize: 30, caption: 'test'}).then(url => {
+  meme.meme({text: [texto.split("\n")[0], texto.split("\n")[1]], font: 'impact', fontSize: 30, caption: 'test'}).then(url => {
 
     let readme = fs.readFileSync("readme.md", "utf-8");
     readme += `\n![meme](${url})`;
