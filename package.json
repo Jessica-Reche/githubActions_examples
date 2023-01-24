@@ -20,6 +20,6 @@
     "@actions/core": "^1.10.0",
     "fs": "0.0.1-security",
     "jest": "^27.4.3",
-    "memegen": "^2.0.0"
+    "memegen": "^1.0.0"
   }
 }
