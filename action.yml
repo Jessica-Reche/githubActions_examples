@@ -1,20 +1,23 @@
-name: "Send Telegram message"
-description: "Send message to Telegram"
+name: "custom-action-meme"
+description: "Agrega un meme al readme dependiendo del resultado de los tests"
 author: "Jessica"
 inputs:
-  TELEGRAM_TOKEN:
-    description: "Telegram token"
+  frase_positiva:
+    description: "Frase positiva a utilizar"
     required: true
-  TELEGRAM_CHAT_ID: 
-    description: "Telegram chat id"
+  frase_negativa:
+    description: "Frase negativa a utilizar"
+    required: true
+  resultado_tests:
+    description: "Resultado de los tests"
     required: true
 
 outputs:
-  FINAL_RESULT:
-    description: "Sent message"
+  meme_added:
+    description: "Meme añadido al readme"
     
 
    
 runs:
   using: 'node16'
-  main: 'dist/index.js' 
+  main: 'dist/index.js'

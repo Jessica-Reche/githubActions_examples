@@ -1,0 +1,23 @@
+name: "custom-action-meme"
+
+on: [push]
+
+jobs:
+ ejecutar_tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+       fetch-depth: 0
+    - name: Ejecutar tests
+      run: |
+        npm install jest
+        npm test
+    - name: Agregar meme al readme
+      uses: ./
+      with:
+        frase_positiva: "Los tests han funcionado y lo sabes"
+        frase_negativa: "Los tests han fallado y lo sabes"
+        resultado_tests: ${{ job.status }}

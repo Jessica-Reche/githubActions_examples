@@ -1,48 +1,22 @@
-const Telegram = require('node-telegram-bot-api');
-const core = require('@actions/core');
-const github = require('@actions/github');
+const fs = require('fs');
+const nodeMemes = require('node-memes');
 
-// Get the commit SHA
- function sha() {
-    try {
-        
-        const context = github.context;
-        const sha = context.sha;
-        const repo = context.repo.repo;
-        const owner = context.repo.owner;
-        msgCommit = `El último commit en el repositorio ${repo} de ${owner} tiene el sha: ${sha}`;
-        console.log(msgCommit);
-       
-
-    } catch (error) {
-        core.setFailed(error.message);
-    } 
-}
-// Send a message to a Telegram chat
-async function sendTelegramMessage(token, chatId, message) {
-    try {
-        
-        const bot = new Telegram(token, {polling: true});
-        //get name of chat
-        const chat = await bot.getChat(chatId);
-        message= chat.username ? message += `@${chat.username}` : message += `${chat.first_name}`;
-        await bot.sendMessage(chatId, `${message} `);
-        core.setOutput("FINAL_RESULT", "Mensaje enviado");
-        //stop bot and exit
-       await bot.stopPolling();
-       await process.exit(0);
-
-
-    } catch (error) {
-      core.setFailed(error.message);
-    }
+async function run(params) {
+  let { frase_positiva, frase_negativa, resultado_tests } = params;
+  let text;
+  if(resultado_tests === 'success'){
+    text = frase_positiva;
+  }else{
+    text = frase_negativa;
   }
+  if (!fs.existsSync('readme.md')) {
+    fs.writeFileSync('readme.md', '# README\n');
+  }
+  let meme = await nodeMemes.meme('doge',text,text);
+  fs.appendFileSync('readme.md', '\n' + meme);
+  return 'Meme añadido al readme';
+}
 
-
-
-
-const telegramToken = core.getInput('TELEGRAM_TOKEN');
-const telegramChatId = core.getInput('TELEGRAM_CHAT_ID');
-const message = `Workflow ejecutado correctamente tras el último commit. Saludos  `;
- sha();
-sendTelegramMessage(telegramToken, telegramChatId, message);
+module.exports = {
+  run: run
+}
