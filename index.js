@@ -1,5 +1,5 @@
 const fs = require("fs");
-const memejs = require("memejs");
+const {meme} = require("memejs");
 const core = require("@actions/core");
 
 async function run() {
@@ -16,7 +16,7 @@ async function run() {
     texto_inferior = frase_negativa.split("\n")[1];
   }
 
-  memejs.memeAsync(texto_superior, texto_inferior, "Impact", 30, "")
+  meme.memeAsync(texto_superior, texto_inferior, "Impact", 30, "")
   .then(url => {
     let readme = fs.readFileSync("README.md", "utf-8");
     readme += `\n![meme](${url})`;
