@@ -15,7 +15,8 @@ jobs:
   agregar_meme:
     runs-on: ubuntu-latest
     steps:
-    
+    - name: Checkout
+      uses: actions/checkout@v2
     - name: Agregar meme al readme
       uses: ./
       with:
