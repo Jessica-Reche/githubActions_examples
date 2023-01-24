@@ -21,4 +21,4 @@ jobs:
     - name: Ejecutar tests
       run: |
         npm install jest
-        npm test
+        npm test 
