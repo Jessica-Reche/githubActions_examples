@@ -37,8 +37,8 @@ jobs:
           git add .
           git commit -m"Agregar meme al readme"
           git push
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          git push https://${{ secrets.TOKEN_GITHUB }}@github.com/Jessica-Reche/githubActions_examples.git
+
           
 
           
