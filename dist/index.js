@@ -44601,12 +44601,13 @@ async function run() {
     texto = frase_negativa;
   }
 
-  meme(texto.split("\n")[0], texto.split("\n")[1], "Impact", 30, "").then(url => {
+  meme(texto.split("\n")[0], texto.split("\n")[1], "Impact", 30, "")
+  .then(url => {
     let readme = fs.readFileSync("readme.md", "utf-8");
     readme += `\n![meme](${url})`;
     fs.writeFileSync("readme.md", readme);
     console.log("Meme añadido al readme");
-  });
+  }).catch(e => console.log(e));
 }
 
 run();
