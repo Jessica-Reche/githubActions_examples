@@ -44587,25 +44587,28 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 const fs = __nccwpck_require__(7147);
-const { meme }  = __nccwpck_require__(3062);
+const memejs = __nccwpck_require__(3062);
 const core = __nccwpck_require__(6643);
 
 async function run() {
   const frase_positiva = core.getInput("frase_positiva");
   const frase_negativa = core.getInput("frase_negativa");
   const resultado_tests = core.getInput("resultado_tests");
-  let texto;
+  let texto_superior;
+  let texto_inferior;
   if (resultado_tests === 'success') {
-    texto = frase_positiva;
+    texto_superior = frase_positiva.split("\n")[0];
+    texto_inferior = frase_positiva.split("\n")[1];
   } else {
-    texto = frase_negativa;
+    texto_superior = frase_negativa.split("\n")[0];
+    texto_inferior = frase_negativa.split("\n")[1];
   }
 
-  meme(texto.split("\n")[0], texto.split("\n")[1], "Impact", 30, "")
+  memejs.meme(texto_superior, texto_inferior, "Impact", 30, "")
   .then(url => {
-    let readme = fs.readFileSync("readme.md", "utf-8");
+    let readme = fs.readFileSync("README.md", "utf-8");
     readme += `\n![meme](${url})`;
-    fs.writeFileSync("readme.md", readme);
+    fs.writeFileSync("README.md", readme);
     console.log("Meme añadido al readme");
   }).catch(e => console.log(e));
 }
