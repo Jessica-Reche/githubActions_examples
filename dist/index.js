@@ -44588,8 +44588,6 @@ var __webpack_exports__ = {};
 (() => {
 const fs = __nccwpck_require__(7147);
 const { meme }  = __nccwpck_require__(3062);
-
-
 const core = __nccwpck_require__(6643);
 
 async function run() {
@@ -44602,13 +44600,8 @@ async function run() {
   } else {
     texto = frase_negativa;
   }
-  //si no existe el readme.md lo creamos
-  if (!fs.existsSync("readme.md")) {
-    fs.writeFileSync("readme.md", "# Memes de los tests");
-  }
 
-  meme.meme({text: [texto.split("\n")[0], texto.split("\n")[1]], font: 'impact', fontSize: 30, caption: 'test'}).then(url => {
-
+  meme.createMeme(texto.split("\n")[0], texto.split("\n")[1], "Impact", 30, "").then(url => {
     let readme = fs.readFileSync("readme.md", "utf-8");
     readme += `\n![meme](${url})`;
     fs.writeFileSync("readme.md", readme);
