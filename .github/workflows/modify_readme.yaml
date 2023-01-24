@@ -12,24 +12,21 @@ jobs:
       run: |
         npm install
         npm test
-
   agregar_meme:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Agregar meme al readme
-      run: |
-        npm install
-        node dist/index.js
+      uses: ./
       with:
         frase_positiva: "Los tests han funcionado y lo sabes"
         frase_negativa: "Los tests han fallado y lo sables"
         resultado_tests: ${{ job.ejecutar_tests.outputs.resultado_tests }}
-    - name: Subir cambios a git
-      run: |
-        git config --global user.email "jessikareix20@gmail.com"
-        git config --global user.name "Jessica-Reche"
-        git add .
-        git commit -m "Agregar meme al readme"
-        git push
+        name: Subir cambios a git
+        run: |
+          git config --global user.email "jessikareix20@gmail.com"
+          git config --global user.name "Jessica-Reche"
+          git add .
+          git commit -m "Agregar meme al readme"
+          git push
