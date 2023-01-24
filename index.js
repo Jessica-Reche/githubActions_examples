@@ -1,5 +1,5 @@
 const fs = require("fs");
-const {meme, memeAsync} = require("memejs");
+const {memeAsync} = require("memejs");
 const core = require("@actions/core");
 
 async function run() {
