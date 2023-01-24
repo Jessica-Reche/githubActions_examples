@@ -16,7 +16,7 @@ async function run() {
     texto_inferior = frase_negativa.split("\n")[1];
   }
 
-  memejs.meme(texto_superior, texto_inferior, "Impact", 30, "")
+  memejs.memeAsync(texto_superior, texto_inferior, "Impact", 30, "")
   .then(url => {
     let readme = fs.readFileSync("README.md", "utf-8");
     readme += `\n![meme](${url})`;
