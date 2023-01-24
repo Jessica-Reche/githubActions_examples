@@ -2,12 +2,6 @@ const fs = require("fs");
 const meme = require("nodejs-meme-generator");
 const core = require("@actions/core");
 
-
-
-if (!fs.existsSync("readme.md")) {
-  fs.writeFileSync("readme.md", "");
-}
-
 async function run() {
   const frase_positiva = core.getInput("frase_positiva");
   const frase_negativa = core.getInput("frase_negativa");
