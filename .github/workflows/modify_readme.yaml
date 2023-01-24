@@ -25,6 +25,8 @@ jobs:
           frase_positiva: "Los tests han funcionado y lo sabes"
           frase_negativa: "Los tests han fallado y lo sables"
           resultado_tests: ${{ job.ejecutar_tests.outputs.resultado_tests }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
           run: |
             npm install
             node index.js
@@ -34,6 +36,7 @@ jobs:
           git config  user.email jessikareix20@gmail.com
           git add .
           git commit -m"Agregar meme al readme"
-          git push origin github-action_readme
+          git push
           
+
           
