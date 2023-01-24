@@ -6,24 +6,29 @@ jobs:
   ejecutar_tests:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: Ejecutar tests
-      run: |
-        npm install
-        npm test
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Ejecutar tests
+        run: |
+          npm install
+          npm test
+      - name: Guardar resultado de los tests
+        run: echo "::set-output name=resultado_tests::$TEST_RESULT"
   agregar_meme:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: Agregar meme al readme
-      uses: ./
-      with:
-        frase_positiva: "Los tests han funcionado y lo sabes"
-        frase_negativa: "Los tests han fallado y lo sables"
-        resultado_tests: ${{ job.ejecutar_tests.outputs.resultado_tests }}
-        name: Subir cambios a git
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Agregar meme al readme
+        uses: ./
+        env:
+          frase_positiva: "Los tests han funcionado y lo sabes"
+          frase_negativa: "Los tests han fallado y lo sables"
+          resultado_tests: ${{ job.ejecutar_tests.outputs.resultado_tests }}
+          run: |
+            npm install
+            node index.js
+      - name: Commit and push
         run: |
           git config --global user.email "jessikareix20@gmail.com"
           git config --global user.name "Jessica-Reche"
