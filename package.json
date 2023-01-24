@@ -18,13 +18,8 @@
   "homepage": "https://github.com/Jessica-Reche/githubActions_examples#readme",
   "dependencies": {
     "@actions/core": "^1.10.0",
+    "canvas": "^2.11.0",
     "fs": "0.0.1-security",
-    "jest": "^27.4.3",
-    "meme-generator": "^0.1.0"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not op_mini all"]
+    "jest": "^27.4.3"
+  }
 }
- 
