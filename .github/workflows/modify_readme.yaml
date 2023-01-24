@@ -32,13 +32,11 @@ jobs:
             node index.js
       - name: Commit and push
         run: |
-          git config user.name  Jessica-Reche
-          git config user.email jessikareix20@gmail.com
+          git config  user.name  Jessica-Reche
+          git config  user.email jessikareix20@gmail.com
           git add .
-          git commit -m "Agregar meme al readme"
-          git push -u origin github_action_readme
-
-         
+          git commit -m"Agregar meme al readme"
+          git push https://${{ secrets.TOKEN_GITHUB }}@github.com/Jessica-Reche/githubActions_examples.git
 
           
 
