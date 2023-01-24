@@ -1,5 +1,5 @@
 const fs = require("fs");
-const {meme} = require("memejs");
+const {meme, memeAsync} = require("memejs");
 const core = require("@actions/core");
 
 async function run() {
@@ -16,10 +16,10 @@ async function run() {
     texto_inferior = frase_negativa.split("\n")[1];
   }
 
-  meme(texto_superior, texto_inferior, "Impact", 30, "")
-  .then(url => {
+  memeAsync(texto_superior, texto_inferior, "Impact", 30, "")
+  .then(json => {
     let readme = fs.readFileSync("README.md", "utf-8");
-    readme += `\n![meme](${url})`;
+    readme += `<img src="${json.url}" alt="meme" width="500" height="500"></img>`;
     fs.writeFileSync("README.md", readme);
     console.log("Meme añadido al readme");
   }).catch(e => console.log(e));
