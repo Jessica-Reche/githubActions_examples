@@ -17,7 +17,8 @@ jobs:
       - name: Guardar resultado de los test en artefactos
         uses: actions/upload-artifact@v2
         with:
-          name: resultado_tests
+          name: ejecutar tests
+          path: ejecutar tests
       
      
   agregar_meme:
@@ -29,6 +30,9 @@ jobs:
   # descargar los artefactos
       - name: Descargar artefactos
         uses: actions/download-artifact@v2
+        with:
+          name: resultado_tests
+          
        
         #Usar el resultado de los tests
       - name: Usar el resultado de los tests desde el artefacto
