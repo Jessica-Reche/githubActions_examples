@@ -8,15 +8,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Ejecutar tests
+      - name: ejecutar tests
         run: |
           npm install
           npm test
      
-      - name: Guardar resultado de los tests
-        id: tests
-        run: |
-          echo "::set-output name=RESULT_TESTS::$(npm test)"
+      
 
         
   agregar_meme:
@@ -29,7 +26,9 @@ jobs:
         env:
           frase_positiva: "Los tests han funcionado y lo sabes"
           frase_negativa: "Los tests han fallado y lo sables"
-          resultado_tests: ${{ steps.tests.outputs.RESULT_TESTS }}
+          #estado del job anterior sin sin aver declarado variables
+          resultado_tests: ${{ job.steps.ejecutar_tests.status }}
+         
           TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB_JESSICA }}
          
 
