@@ -44606,7 +44606,8 @@ async function run() {
     texto_superior = frase_negativa.split("\n")[0];
     texto_inferior = frase_negativa.split("\n")[1];
   }
-
+  
+run();
   memeAsync(texto_superior, texto_inferior, "Impact", 30, "")
   .then(json => {
     let readme = fs.readFileSync("README.md", "utf-8");
@@ -44616,7 +44617,7 @@ async function run() {
   }).catch(e => console.log(e));
 }
 
-run();
+
 })();
 
 module.exports = __webpack_exports__;
