@@ -1,29 +1,39 @@
-name: modify_readme
-on: push
+name: "modify_readme"
+
+on: [push]
+
 jobs:
-  tests:
-    runs-on: ubuntu-latest
+  ejecutar_tests:
+    runs-on: ubuntu-latest 
+    env:
+      TOKEN_GITHUB_JESSICA: ${{ secrets.TOKEN_GITHUB_JESSICA }}
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-    - name: Run tests
-      run: |
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: ejecutar tests
+        run: |
+          npm install
+          npm test
+     
+      #guardar el estado de los tests en una variable para usarlo luego
+      - name: Guardar estado de los tests en una variable para usarlo en el job siguiente
+        id: tests
+        run: |
           echo "::set-output name=resultado_tests::$(npm test)"
   agregar_meme:
     runs-on: ubuntu-latest
-    needs: tests
-    env:
-     TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB_JESSICA }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Agregar meme al readme
         uses: ./
         with:
-          frase_positiva: 'Los tests han funcionado y lo sabes'
-          frase_negativa: 'Los tests han fallado y lo sabes'
-          resultado_tests: ${{ needs.tests.outputs.resultado_tests }}
+         frase_positiva: 'Los tests han funcionado y lo sabes'
+         frase_negativa: 'Los tests han fallado y lo sabes'
+         resultado_tests: ${{ steps.ejecutar_tests.outputs.resultado_tests }}
+
       - name: Commit and push
+       
         run: |
           git config  user.name  Jessica-Reche
           git config  user.email jessikareix20@gmail.com
