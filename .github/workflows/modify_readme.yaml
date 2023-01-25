@@ -11,8 +11,9 @@ jobs:
       - name: ejecutar tests
         run: |
           npm install
+          npm test
           npm run build --if-present
-          npm test 
+           
       # guardar el resultado de los tests
       - name: Guardar resultado de los test en artefactos
         uses: actions/upload-artifact@v3
