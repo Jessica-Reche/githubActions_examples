@@ -9,7 +9,7 @@ async function run() {
   let texto_superior;
   let texto_inferior;
   let texto;
-  if (resultado_tests === "true") {
+  if (resultado_tests === 'success') {
     texto_superior = frase_positiva.split("\n")[0];
     texto="Los tests han funcionado y lo sabes";
     texto_inferior = frase_positiva.split("\n")[1];
