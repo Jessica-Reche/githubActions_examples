@@ -8,19 +8,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: ejecutar tests
+      - name: Ejecutar tests
         run: |
           npm install
           npm test
-     
-      #guardar el estado de los tests en una variable para usarlo luego
-      - name: Guardar estado de los tests en una variable para usarlo en el job siguiente
-        id: tests
-        run: |
-          echo "::set-output name=resultado_tests::$(npm test)"
+      - name: Guardar resultado de los tests
+        run: echo "::set-output name=resultado_tests::$TEST_RESULT"
+        
   agregar_meme:
     runs-on: ubuntu-latest
-    needs: test
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -29,8 +25,7 @@ jobs:
         env:
           frase_positiva: "Los tests han funcionado y lo sabes"
           frase_negativa: "Los tests han fallado y lo sables"
-          resultado_tests: ${{ steps.tests.outputs.resultado_tests }}
-         
+          resultado_tests: ${{ job.ejecutar_tests.outputs.resultado_tests }}
           TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB_JESSICA }}
          
 
