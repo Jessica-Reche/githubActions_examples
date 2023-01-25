@@ -18,7 +18,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: ejecutar tests
-          path: ejecutar tests
+          path: ../../index.test.js
       
      
   agregar_meme:
@@ -33,8 +33,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: ejecutar tests
-          path: ejecutar tests
-       
+     
         #Usar el resultado de los tests
       - name: Usar el resultado de los tests desde el artefacto
         id: ejecutar_tests
