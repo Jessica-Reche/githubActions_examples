@@ -1,28 +1,24 @@
-const { execSync } = require('child_process');
-const { random } = require('memejs');
+const fs = require('fs');
+const { memeAsync } = require('memejs');
+const core = require('@actions/core');
 
-// Obtener parámetros de entrada
-const frase_positiva = process.env.frase_positiva;
-const frase_negativa = process.env.frase_negativa;
-const resultado_tests = process.env.resultado_tests;
+async function run() {
+  const frase_postiva = core.getInput('frase_postiva');
+  const frase_negativa = core.getInput('frase_negativa');
+  const resultado_tests = core.getInput('resultado_tests');
 
-// Ejecutar tests
-let tests_passed = true;
-try {
-    execSync('npm test');
-} catch (err) {
-    tests_passed = false;
+  if (resultado_tests == 'success') {
+    const meme = await memeAsync(frase_postiva, 'success');
+    fs.writeFileSync('meme.png', meme);
+
+  } else {
+    const meme = await memeAsync(frase_negativa, 'error');
+    fs.writeFileSync('meme.png', meme);
+
+
+  }
+
+  console.log("Meme añadido al readme")
 }
 
-// Generar meme
-let texto_meme = frase_positiva;
-if (!tests_passed) {
-    texto_meme = frase_negativa;
-}
-random(texto_meme).then(meme => {
-    const readme = `#Meme
-    <h1>${texto}</h1> <img src="${meme.url}" alt="meme" width="500" height="500"></img>
-`;
-    fs.writeFileSync('README.md', readme);
-    console.log('Meme añadido al readme');
-});
+run();
