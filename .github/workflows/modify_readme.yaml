@@ -29,10 +29,11 @@ jobs:
         uses: actions/checkout@v2
   # descargar los artefactos
       - name: Descargar artefactos
+     #Descargar los artefactos de la ejecución de los tests
         uses: actions/download-artifact@v2
         with:
           name: ejecutar tests
-          
+          path: ejecutar tests
        
         #Usar el resultado de los tests
       - name: Usar el resultado de los tests desde el artefacto
