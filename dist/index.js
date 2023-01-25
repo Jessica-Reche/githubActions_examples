@@ -44599,10 +44599,10 @@ async function run() {
   let texto;
   if (resultado_tests === 'success') {
     texto_superior = frase_positiva.split("\n")[0];
-    texto="Los tests han funcionado y lo sabes";
+    texto=frase_positiva;
     texto_inferior = frase_positiva.split("\n")[1];
   } else {
-    texto="Los tests han fallado y lo sables";
+    texto=frase_negativa;
     texto_superior = frase_negativa.split("\n")[0];
     texto_inferior = frase_negativa.split("\n")[1];
   }
