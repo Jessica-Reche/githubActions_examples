@@ -1,7 +1,5 @@
 name: "modify_readme"
-
 on: [push]
-
 jobs:
   ejecutar_tests:
     runs-on: ubuntu-latest 
@@ -11,40 +9,38 @@ jobs:
       - name: ejecutar tests
         run: |
           npm install
-          npm test
           npm run build --if-present
-           
-      # guardar el resultado de los tests
+          npm test 
+          if [ $? -eq 0 ]; then
+            echo "success" > resultado_tests
+          else
+            echo "fail" > resultado_tests
+          fi
       - name: Guardar resultado de los test en artefactos
         uses: actions/upload-artifact@v3
         with:
-          name: ejecutar_tests
-          path: ejecutar_tests
-      
-     
+          name: resultado_tests
+          path: resultado_tests
   agregar_meme:
     runs-on: ubuntu-latest
     needs: ejecutar_tests
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-  # descargar los artefactos
       - name: Descargar artefactos
-     #Descargar los artefactos de la ejecución de los tests
         uses: actions/download-artifact@v3
         with:
-          name: ejecutar_tests
-        #Usar el resultado de los tests
+          name: resultado_tests
+          path: resultado_tests
       - name: Usar el resultado de los tests desde el artefacto
-        id: ejecutar_tests
         run: |
-          echo "::set-output name=status::$(cat ejecutar_tests)")"  
-      
+          resultado_tests=$(cat resultado_tests)
+          echo "::set-output name=resultado_tests::$resultado_tests"
       - name: Agregar meme al readme
         uses: ./
         env:
           frase_positiva: "Los tests han funcionado y lo sabes"
-          frase_negativa: "Los tests han fallado y lo sables"
+          frase_negativa: "Los tests han fallado y lo sabes"
           resultado_tests: ${{ steps.ejecutar_tests.outputs.status }}
           TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB_JESSICA }}
           run: |
@@ -57,7 +53,3 @@ jobs:
           git add .
           git commit -m"Agregar meme al readme"
           git push https://$TOKEN_GITHUB_JESSICA@github.com/Jessica-Reche/githubActions_examples.git
-
-           
- 
-          
