@@ -16,7 +16,7 @@ jobs:
       - name: Guardar resultado de los tests
         id: ejecutar_tests
         run: |
-          echo "::set-output name=status::$(echo $?)" 
+          echo "::set-output name=status::$(npm test | grep -oP '(?<=tests: )\d+(?= passing)')" 
         
   agregar_meme:
     runs-on: ubuntu-latest

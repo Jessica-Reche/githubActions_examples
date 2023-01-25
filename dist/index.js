@@ -44587,26 +44587,33 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 const fs = __nccwpck_require__(7147);
-const { memeAsync } = __nccwpck_require__(3062);
+const {memeAsync} = __nccwpck_require__(3062);
 const core = __nccwpck_require__(6643);
 
 async function run() {
-  const frase_postiva = core.getInput('frase_postiva');
-  const frase_negativa = core.getInput('frase_negativa');
-  const resultado_tests = core.getInput('resultado_tests');
-
-  if (resultado_tests == 'success') {
-    const meme = await memeAsync(frase_postiva, 'success');
-    fs.writeFileSync('meme.png', meme);
-
+  const frase_positiva = core.getInput("frase_positiva");
+  const frase_negativa = core.getInput("frase_negativa");
+  const resultado_tests = core.getInput("resultado_tests");
+  let texto_superior;
+  let texto_inferior;
+  let texto;
+  if (resultado_tests === 'success') {
+    texto_superior = frase_positiva.split("\n")[0];
+    texto="Los tests han funcionado y lo sabes";
+    texto_inferior = frase_positiva.split("\n")[1];
   } else {
-    const meme = await memeAsync(frase_negativa, 'error');
-    fs.writeFileSync('meme.png', meme);
-
-
+    texto="Los tests han fallado y lo sables";
+    texto_superior = frase_negativa.split("\n")[0];
+    texto_inferior = frase_negativa.split("\n")[1];
   }
 
-  console.log("Meme añadido al readme")
+  memeAsync(texto_superior, texto_inferior, "Impact", 30, "")
+  .then(json => {
+    let readme = fs.readFileSync("README.md", "utf-8");
+    readme += `<h1>${texto}</h1> <img src="${json.url}" alt="meme" width="500" height="500"></img>`;
+    fs.writeFileSync("README.md", readme);
+    console.log("Meme añadido al readme");
+  }).catch(e => console.log(e));
 }
 
 run();
