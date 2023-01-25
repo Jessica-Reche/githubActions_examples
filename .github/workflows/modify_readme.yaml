@@ -18,7 +18,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: ejecutar tests
-          path: ../../index.test.js
+          path: index.test.js
       
      
   agregar_meme:
