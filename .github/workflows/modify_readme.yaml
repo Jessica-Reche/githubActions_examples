@@ -27,7 +27,7 @@ jobs:
           frase_positiva: "Los tests han funcionado y lo sabes"
           frase_negativa: "Los tests han fallado y lo sables"
           #estado del job anterior sin sin aver declarado variables
-          resultado_tests: ${{ job.steps.ejecutar_tests.status }}
+          resultado_tests: ${{ jobs.steps.ejecutar_tests.status }}
          
           TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB_JESSICA }}
          
