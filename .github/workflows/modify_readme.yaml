@@ -11,18 +11,30 @@ jobs:
       - name: ejecutar tests
         run: |
           npm install
+          npm run build --if-present
           npm test 
       # guardar el resultado de los tests
-      - name: Guardar resultado de los tests
-        id: ejecutar_tests
-        run: |
-          echo "::set-output name=status::$(npm test | grep -oP '(?<=tests: )\d+(?= passing)')" 
-        
+      - name: Guardar resultado de los test en artefactos
+        uses: actions/upload-artifact@v2
+        with:
+          name: resultado_tests
+     
   agregar_meme:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+  # descargar los artefactos
+      - name: Descargar artefactos
+        uses: actions/download-artifact@v2
+        with:
+          name: resultado_tests
+        #Usar el resultado de los tests
+      - name: Usar el resultado de los tests desde el artefacto
+        id: ejecutar_tests
+        run: |
+          echo "::set-output name=status::$(cat resultado_tests)"  
+      
       - name: Agregar meme al readme
         uses: ./
         env:
@@ -30,15 +42,10 @@ jobs:
           frase_negativa: "Los tests han fallado y lo sables"
           resultado_tests: ${{ steps.ejecutar_tests.outputs.status }}
           TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB_JESSICA }}
-         
-
           run: |
             npm install
             node index.js
-      
-
-      - name: Commit and push
-       
+      - name: Commit and push 
         run: |
           git config  user.name  Jessica-Reche
           git config  user.email jessikareix20@gmail.com
