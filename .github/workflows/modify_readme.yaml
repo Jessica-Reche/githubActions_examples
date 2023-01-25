@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: ejecutar tests
         run: |
           npm install
@@ -15,7 +15,7 @@ jobs:
           npm test 
       # guardar el resultado de los tests
       - name: Guardar resultado de los test en artefactos
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: ejecutar_tests
           path: ejecutar_tests
@@ -26,19 +26,18 @@ jobs:
     needs: ejecutar_tests
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
   # descargar los artefactos
       - name: Descargar artefactos
      #Descargar los artefactos de la ejecución de los tests
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: ejecutar_tests
-     
         #Usar el resultado de los tests
       - name: Usar el resultado de los tests desde el artefacto
         id: ejecutar_tests
         run: |
-          echo "::set-output name=status::$(cat resultado_tests)"  
+          echo "::set-output name=status::$(cat ejecutar_tests)")"  
       
       - name: Agregar meme al readme
         uses: ./
