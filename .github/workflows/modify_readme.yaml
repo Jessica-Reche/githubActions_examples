@@ -19,7 +19,7 @@ jobs:
       - name: Guardar estado de los tests en una variable para usarlo en el job siguiente
         id: tests
         run: |
-          echo "::set-output name=resultado_tests::$(npm test)"
+          echo "::set-output name=resultado_tests::$(npm test)" 
   agregar_meme:
     runs-on: ubuntu-latest
     steps:

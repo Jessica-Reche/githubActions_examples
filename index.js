@@ -1,21 +1,40 @@
-const fs = require("fs");
-const {memeAsync} = require("memejs");
-const core = require("@actions/core");
+const memejs = require('memejs');
+const fs = require('fs');
 
-const fs = require("fs");
-const memejs = require("memejs");
+function createMeme(frase_positiva, frase_negativa, resultado_tests) {
+    // Obtener un meme aleatorio de la API de memejs
+    memejs.getMeme((err, meme) => {
+        if (err) {
+            console.error(err);
+            return;
+        }
+        // Decidir que frase usar para el meme
+        let frase = "";
+        if (resultado_tests) {
+            frase = frase_positiva;
+        } else {
+            frase = frase_negativa;
+        }
+        // Crear el meme con la frase deseada
+        const memeUrl = meme.url;
+        const memeCaption = frase;
+        const memeImage = `<img src="${memeUrl}" alt="${memeCaption}"/>`;
+        // Añadir el meme al archivo readme.md
+        fs.readFile('readme.md', 'utf8', (err, data) => {
+            if (err) {
+                console.error(err);
+                return;
+            }
+            const newData = data + "\n" + memeImage + "\n" + memeCaption;
+            fs.writeFile('readme.md', newData, (err) => {
+                if (err) {
+                    console.error(err);
+                    return;
+                }
+                console.log("Meme añadido al readme");
+            });
+        });
+    });
+}
 
-module.exports = async function(frase_positiva, frase_negativa, resultado_tests) {
-  let frase = frase_negativa;
-  if (resultado_tests === "success") {
-    frase = frase_positiva;
-  }
-
-  const meme = await memejs.random();
-  const texto = `![${frase}](${meme.url})`;
-
-  // Añadir el texto al final del archivo readme.md
-  fs.appendFileSync("readme.md", texto);
-
-  return "Meme añadido al readme";
-};
+module.exports = { createMeme };
