@@ -1,40 +1,32 @@
-const memejs = require('memejs');
-const fs = require('fs');
+const fs = require("fs");
+const {memeAsync} = require("memejs");
+const core = require("@actions/core");
 
-function createMeme(frase_positiva, frase_negativa, resultado_tests) {
-    // Obtener un meme aleatorio de la API de memejs
-    memejs.getMeme((err, meme) => {
-        if (err) {
-            console.error(err);
-            return;
-        }
-        // Decidir que frase usar para el meme
-        let frase = "";
-        if (resultado_tests) {
-            frase = frase_positiva;
-        } else {
-            frase = frase_negativa;
-        }
-        // Crear el meme con la frase deseada
-        const memeUrl = meme.url;
-        const memeCaption = frase;
-        const memeImage = `<img src="${memeUrl}" alt="${memeCaption}"/>`;
-        // Añadir el meme al archivo readme.md
-        fs.readFile('readme.md', 'utf8', (err, data) => {
-            if (err) {
-                console.error(err);
-                return;
-            }
-            const newData = data + "\n" + memeImage + "\n" + memeCaption;
-            fs.writeFile('readme.md', newData, (err) => {
-                if (err) {
-                    console.error(err);
-                    return;
-                }
-                console.log("Meme añadido al readme");
-            });
-        });
-    });
+async function run() {
+  const frase_positiva = core.getInput("frase_positiva");
+  const frase_negativa = core.getInput("frase_negativa");
+  const resultado_tests = core.getInput("resultado_tests");
+  let texto_superior;
+  let texto_inferior;
+  let texto;
+  if (resultado_tests === 'success') {
+    texto_superior = frase_positiva.split("\n")[0];
+    texto="Los tests han funcionado y lo sabes";
+    texto_inferior = frase_positiva.split("\n")[1];
+  } else {
+    texto="Los tests han fallado y lo sables";
+    texto_superior = frase_negativa.split("\n")[0];
+    texto_inferior = frase_negativa.split("\n")[1];
+  }
+  
+
+  memeAsync(texto_superior, texto_inferior, "Impact", 30, "")
+  .then(json => {
+    let readme = fs.readFileSync("README.md", "utf-8");
+    readme += `<h1>${texto}</h1> <img src="${json.url}" alt="meme" width="500" height="500"></img>`;
+    fs.writeFileSync("README.md", readme);
+    console.log("Meme añadido al readme");
+  }).catch(e => console.log(e));
 }
 
-module.exports = { createMeme };
+run();
