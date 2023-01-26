@@ -1,0 +1,1 @@
+<h1>Error: resultado_tests no es un número. Tipo de dato: string</h1> <img src="https://i.redd.it/ui8kzzogpxda1.jpg" alt="meme" width="500" height="500"></img><h1>Error: resultado_tests no es un número. Tipo de dato: string</h1> <img src="https://i.redd.it/dv7aqqpgsfea1.jpg" alt="meme" width="500" height="500"></img>
