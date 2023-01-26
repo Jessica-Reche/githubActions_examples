@@ -13,8 +13,12 @@ jobs:
         run: |
           npm install
           npm test
+          #resultado de la ejecución de los tests
           echo "::set-output name=resultado_tests::$(npm test)"
-          echo "Resultado de los tests: $resultado_tests "
+          #ver el contenido de la variable resultado_tests
+          echo $resultado_tests
+
+          
   agregar_meme:
     runs-on: ubuntu-latest
     needs: test
