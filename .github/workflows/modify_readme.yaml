@@ -15,8 +15,8 @@ jobs:
           npm test
           result=$?
           #resultado de la ejecución de los tests
-          echo "::set-output name=result::$result"
-          echo "::set-env name=TEST_RESULT::$result"
+          echo `::set-output name=result::$result`
+          echo `::set-env name=TEST_RESULT::$result`
 
   agregar_meme:
     runs-on: ubuntu-latest
