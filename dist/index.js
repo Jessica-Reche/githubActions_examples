@@ -44592,15 +44592,17 @@ const core = __nccwpck_require__(6643);
 const frase_positiva = core.getInput("frase_positiva");
 const frase_negativa = core.getInput("frase_negativa");
 const resultado_tests = core.getInput("resultado_tests");
-let texto = false;
+
 
 run(frase_positiva, frase_negativa, resultado_tests);
 
 async function run(frase_positiva, frase_negativa, resultado_tests) {
+
   let texto_superior;
   let texto_inferior;
-
   try {
+
+    let texto = false;
     if (Number(core.getInput("resultado_tests")) === 0) {
       texto_superior = frase_positiva.split("\n")[0];
       texto = true;
@@ -44613,17 +44615,21 @@ async function run(frase_positiva, frase_negativa, resultado_tests) {
       //se guarda en la variable texto el tipo de error que se ha producido y el tipo de dato que es la variable resultado_tests
       texto = `Error: resultado_tests no es un número. Tipo de dato: ${typeof resultado_tests}`;
     }
+    texto = texto ? texto_positivo : texto_negativo;
+    memeAsync(texto_superior, texto_inferior, "Impact", 30, "")
 
-    let json = await memeAsync(texto_superior, texto_inferior, "Impact", 30, "");
-    texto = texto ? frase_positiva : frase_negativa;
-    let readme = fs.readFileSync("README.md", "utf-8");
-    readme += `<h1>${texto}</h1> <img src="${json.url}" alt="meme" width="500" height="500"></img>`;
-    fs.writeFileSync("README.md", readme);
-    console.log("Meme añadido al readme");
+      .then(json => {
+        Number(core.getInput("resultado_tests")) === 0
+        let readme = fs.readFileSync("README.md", "utf-8");
+        readme += `<h1>${texto}</h1> <img src="${json.url}" alt="meme" width="500" height="500"></img>`;
+        fs.writeFileSync("README.md", readme);
+        console.log("Meme añadido al readme");
+      }).catch(e => console.log(e));
+
   } catch (e) {
     console.log(e);
   }
-}
+};
 })();
 
 module.exports = __webpack_exports__;
