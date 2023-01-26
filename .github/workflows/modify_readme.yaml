@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Agregar meme al readme
         uses: ./
-        env:
+        with:
           frase_positiva: "Los tests han funcionado y lo sabes"
           frase_negativa: "Los tests han fallado y lo sabes"
           TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB_JESSICA }}
