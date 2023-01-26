@@ -3,6 +3,7 @@ on: [push]
 jobs:
   test:
     runs-on: ubuntu-latest
+    continue-on-error: true
     outputs:
       resultado_tests: ${{ steps.test_job.outputs.result }}
     steps:
