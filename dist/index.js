@@ -44626,7 +44626,7 @@ async function run(frase_positiva, frase_negativa, resultado_tests) {
     }).catch(e => console.log(e));
 }
 
-run(frase_positiva, frase_negativa, resultado_tests); 
+run(texto,frase_positiva, frase_negativa, resultado_tests); 
 })();
 
 module.exports = __webpack_exports__;
