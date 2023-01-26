@@ -10,11 +10,8 @@ jobs:
         run: |
           npm install
           npm test
-          resultado_tests:=$?
-          echo "Test_result: $resultado_tests"
-        env:
-         resultado_tests: ${{ steps.test_job.outputs.test_result }}
-       
+          echo "::set-output name=test_result::$?"
+          
   agregar_meme:
     runs-on: ubuntu-latest
     steps:
@@ -37,4 +34,3 @@ jobs:
           git add .
           git commit -m"Agregar meme al readme"
           git push https://$TOKEN_GITHUB_JESSICA@github.com/Jessica-Reche/githubActions_examples.git
- 
