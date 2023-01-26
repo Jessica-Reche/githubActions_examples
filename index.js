@@ -5,7 +5,7 @@ const frase_positiva = core.getInput("frase_positiva");
 const frase_negativa = core.getInput("frase_negativa");
 const resultado_tests = core.getInput("resultado_tests");
 
-async function run() {
+async function run(frase_positiva, frase_negativa, resultado_tests) {
 
   let texto_superior;
   let texto_inferior;
