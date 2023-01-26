@@ -14,6 +14,7 @@ jobs:
           npm install
           npm test
           echo "::set-output name=resultado_tests::$(npm test)"
+          echo "Resultado de los tests: ${{ steps.test_job.outputs.resultado_tests }}"
   agregar_meme:
     runs-on: ubuntu-latest
     needs: test
