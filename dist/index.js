@@ -44589,13 +44589,14 @@ var __webpack_exports__ = {};
 const fs = __nccwpck_require__(7147);
 const { memeAsync } = __nccwpck_require__(3062);
 const core = __nccwpck_require__(6643);
-
+let texto;
 
 async function run() {
 
   let texto_superior;
   let texto_inferior;
-  let texto;
+  
+ 
   try {
     if (Number(core.getInput("resultado_tests")) === 0  ) {	
       texto_superior = frase_positiva.split("\n")[0];

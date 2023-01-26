@@ -1,13 +1,14 @@
 const fs = require("fs");
 const { memeAsync } = require("memejs");
 const core = require("@actions/core");
-
+let texto;
 
 async function run() {
 
   let texto_superior;
   let texto_inferior;
-  let texto;
+  
+ 
   try {
     if (Number(core.getInput("resultado_tests")) === 0  ) {	
       texto_superior = frase_positiva.split("\n")[0];
