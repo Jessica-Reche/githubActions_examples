@@ -13,8 +13,7 @@ jobs:
           TEST_RESULT=$?
           echo "Test result: $TEST_RESULT"
           echo "::set-output name=test_result::$resultado_test"
-        env:
-         resultado_test: ${{ steps.test_job.outputs.test_result}}
+        id: test_job
        
   agregar_meme:
     runs-on: ubuntu-latest
@@ -26,6 +25,7 @@ jobs:
         with:
           frase_positiva: "Los tests han funcionado y lo sabes"
           frase_negativa: "Los tests han fallado y lo sabes"
+          resultado_tests: ${{ steps.test_job.outputs.test_result }}
           TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB_JESSICA }}
           run: |
             npm install
