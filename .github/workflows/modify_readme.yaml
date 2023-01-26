@@ -25,13 +25,13 @@ jobs:
         uses: actions/checkout@v3
       - name: Obtener resultado de los tests
         run: |
-            resultado_tests=${{env.resultado_tests }}
+            resultado_tests=${{ env.TEST_RESULT }}
       - name: Agregar meme al readme
         uses: ./
         with:
           frase_positiva: "Los tests han funcionado y lo sabes"
           frase_negativa: "Los tests han fallado y lo sabes"
-          resultado_tests: ${{ env.TEST_RESULT }}
+          resultado_tests: ${{ env.resultado_tests }}
       - name: Ejecutar código
         run: |
           npm install
