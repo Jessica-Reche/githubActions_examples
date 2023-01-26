@@ -27,13 +27,14 @@ async function run(frase_positiva, frase_negativa, resultado_tests) {
       //se guarda en la variable texto el tipo de error que se ha producido y el tipo de dato que es la variable resultado_tests
       texto = `Error: resultado_tests no es un número. Tipo de dato: ${typeof resultado_tests}`;
     }
-    
+
     memeAsync(texto_superior, texto_inferior, "Impact", 30, "")
 
       .then(json => {
-
+        const core = require("@actions/core");
+        texto = Number(core.getInput("resultado_tests")) === 0 ? core.getInput("frase_positiva") : core.getInput("frase_negativa");
         let readme = fs.readFileSync("README.md", "utf-8");
-        readme += `<h1>${Number(core.getInput("resultado_tests")) === 0 ? core.getInput("frase_positiva") : core.getInput("frase_negativa")}</h1> <img src="${json.url}" alt="meme" width="500" height="500"></img>`;
+        readme += `<h1>${texto}</h1> <img src="${json.url}" alt="meme" width="500" height="500"></img>`;
         fs.writeFileSync("README.md", readme);
         console.log("Meme añadido al readme");
       }).catch(e => console.log(e));
