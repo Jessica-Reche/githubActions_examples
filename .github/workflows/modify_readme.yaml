@@ -29,7 +29,7 @@ jobs:
         with:
           frase_positiva: "Los tests han funcionado y lo sabes"
           frase_negativa: "Los tests han fallado y lo sabes"
-          resultado_tests: ${{ needs.test.outputs.resultado_tests}}
+          resultado_tests: ${{ steps.test.outputs.resultado_tests}}
       - name: Ejecutar código
         run: |
           npm install
