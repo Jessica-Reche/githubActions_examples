@@ -14,9 +14,8 @@ jobs:
           npm install
           npm test
           #resultado de la ejecución de los tests
-          echo "::set-output name=resultado_tests::$(npm test)"
-          #ver el contenido de la variable resultado_tests
-          echo "resultado:" $resultado_tests
+          "echo "::set-output name=resultado_tests::valor""
+    
 
           
   agregar_meme:
