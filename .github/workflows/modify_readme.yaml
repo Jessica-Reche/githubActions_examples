@@ -2,17 +2,22 @@ name: "modify_readme"
 on: [push]
 jobs:
   test:
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
+    outputs:
+      resultado_tests: ${{ steps.test_job.outputs.resultado_tests }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
       - name: test_job
+        id: test_job
         run: |
           npm install
           npm test
-          echo "::set-output name=test_result::$?"
-    outputs:
-      test_result: ${{ steps.test_job.outputs.test_result }}
+          echo "::set-output name=resultado_tests::$(npm test)"
+        env:
+          # guardar el resultado de los tests en una variable de entorno
+          RESULTADO_TESTS: ${{ steps.test_job.outputs.}}
+
        
           
   agregar_meme:
@@ -26,22 +31,11 @@ jobs:
         with:
           frase_positiva: "Los tests han funcionado y lo sabes"
           frase_negativa: "Los tests han fallado y lo sabes"
-          resultado_tests: ${{ needs.test.outputs.test_result }}
+          resultado_tests: ${{ needs.test.outputs.resultado_tests }}
           TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB_JESSICA }}
           run: |
             npm install
             npm start
-            run: |
-            npm install
-            if ${{ needs.test.outputs.test_result }} -eq 0
-            then
-              resultado_tests="exitoso"
-            else
-              resultado_tests="fallido"
-            fi
-            echo "::set-output name=resultado_tests::$resultado_tests"
-   
-           
       - name: Commit and push 
         run: |
           git config  user.name  Jessica-Reche

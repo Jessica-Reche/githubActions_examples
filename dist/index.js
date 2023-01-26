@@ -44610,7 +44610,7 @@ function generar_meme(frase_positiva, frase_negativa, resultado_tests) {
   let texto_superior;
   let texto_inferior;
   let texto;
-  if (resultado_tests == true) {
+  if (resultado_tests == 0) {
     texto_superior = frase_positiva.split("\n")[0];
     texto=frase_positiva;
     texto_inferior = frase_positiva.split("\n")[1];
