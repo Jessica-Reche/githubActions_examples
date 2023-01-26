@@ -44587,7 +44587,7 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 const fs = __nccwpck_require__(7147);
-const {memeAsync} = __nccwpck_require__(3062);
+const { memeAsync } = __nccwpck_require__(3062);
 const core = __nccwpck_require__(6643);
 const frase_positiva = core.getInput("frase_positiva");
 const frase_negativa = core.getInput("frase_negativa");
@@ -44598,23 +44598,31 @@ async function run() {
   let texto_superior;
   let texto_inferior;
   let texto;
-  if (resultado_tests === 0) {
-    texto_superior = frase_positiva.split("\n")[0];
-    texto='frase_positiva';
-    texto_inferior = frase_positiva.split("\n")[1];
-  } else {
-    texto='frase_negativa';
-    texto_superior = frase_negativa.split("\n")[0];
-    texto_inferior = frase_negativa.split("\n")[1];
+  try {
+    if (resultado_tests === 0) {
+      texto_superior = frase_positiva.split("\n")[0];
+      texto = 'frase_positiva';
+      texto_inferior = frase_positiva.split("\n")[1];
+    } else if (resultado_tests === 1) {
+      texto = 'frase_negativa';
+      texto_superior = frase_negativa.split("\n")[0];
+      texto_inferior = frase_negativa.split("\n")[1];
+    } else {
+      texto = 'variable no definida';
+    }
+  } catch (e) {
+    console.log(e);
   }
 
+
+
   memeAsync(texto_superior, texto_inferior, "Impact", 30, "")
-  .then(json => {
-    let readme = fs.readFileSync("README.md", "utf-8");
-    readme += `<h1>${texto}</h1> <img src="${json.url}" alt="meme" width="500" height="500"></img>`;
-    fs.writeFileSync("README.md", readme);
-    console.log("Meme añadido al readme");
-  }).catch(e => console.log(e));
+    .then(json => {
+      let readme = fs.readFileSync("README.md", "utf-8");
+      readme += `<h1>${texto}</h1> <img src="${json.url}" alt="meme" width="500" height="500"></img>`;
+      fs.writeFileSync("README.md", readme);
+      console.log("Meme añadido al readme");
+    }).catch(e => console.log(e));
 }
 
 run(); 
