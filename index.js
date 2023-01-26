@@ -12,6 +12,7 @@ async function run(frase_positiva, frase_negativa, resultado_tests) {
 
   let texto_superior;
   let texto_inferior;
+ 
   try {
 
     let texto = false;
@@ -33,12 +34,13 @@ async function run(frase_positiva, frase_negativa, resultado_tests) {
 
       .then(json => {
       
-       
-        if (texto) {
-          texto =core.getInput("frase_positiva").toString();
-        } else {
-          texto =  core.getInput("frase_negativa").toString();
+       //se comprueba si la variable texto es true o false, si es true se guarda en la variable texto el valor de la variable frase_positiva, si es false se guarda en la variable texto el valor de la variable frase_negati
+        if (texto === true) {
+          texto = frase_positiva;
+        } else if (texto === false) {
+          texto = frase_negativa;
         }
+        
         let readme = fs.readFileSync("README.md", "utf-8");
         readme += `<h1>${texto}</h1> <img src="${json.url}" alt="meme" width="500" height="500"></img>`;
         fs.writeFileSync("README.md", readme);
