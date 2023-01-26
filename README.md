@@ -1,1 +1,1 @@
-<h1></h1> <img src="https://i.redd.it/tkr23318qdea1.png" alt="meme" width="500" height="500"></img>
+<h1></h1> <img src="https://i.redd.it/tkr23318qdea1.png" alt="meme" width="500" height="500"></img><h1></h1> <img src="https://i.redd.it/0z0huccrjdea1.jpg" alt="meme" width="500" height="500"></img>
