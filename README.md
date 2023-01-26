@@ -1,1 +1,1 @@
-<h1></h1> <img src="https://i.redd.it/s624hgoowpaa1.jpg" alt="meme" width="500" height="500"></img>
+<h1></h1> <img src="https://i.redd.it/s624hgoowpaa1.jpg" alt="meme" width="500" height="500"></img><h1>frase_negativa</h1> <img src="https://i.redd.it/dh5260wpkaea1.jpg" alt="meme" width="500" height="500"></img>
