@@ -7,7 +7,7 @@ async function run() {
 //acceder desde las variables de entorno
     const frase_positiva = core.getInput("frase_positiva");
     const frase_negativa = core.getInput("frase_negativa");
-    const resultado_tests = core.getBooleanInput("resultado_tests");
+    const resultado_tests = core.getState("resultado_tests");
 
     console.log("frase_positiva: ", frase_positiva);
     console.log("frase_negativa: ", frase_negativa);
