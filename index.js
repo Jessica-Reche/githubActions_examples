@@ -26,8 +26,6 @@ async function run(frase_positiva, frase_negativa, resultado_tests) {
     console.log(e);
   }
 
-
-
   memeAsync(texto_superior, texto_inferior, "Impact", 30, "")
     .then(json => {
       let readme = fs.readFileSync("README.md", "utf-8");
