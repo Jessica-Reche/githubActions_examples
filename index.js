@@ -32,7 +32,12 @@ async function run(frase_positiva, frase_negativa, resultado_tests) {
 
       .then(json => {
         const core = require("@actions/core");
-        texto = Number(core.getInput("resultado_tests")) === 0 ? core.getInput("frase_positiva") : core.getInput("frase_negativa");
+        let texto = "";
+        if (texto) {
+          texto = "Meme positivo";
+        } else {
+          texto = "Meme negativo";
+        }
         let readme = fs.readFileSync("README.md", "utf-8");
         readme += `<h1>${texto}</h1> <img src="${json.url}" alt="meme" width="500" height="500"></img>`;
         fs.writeFileSync("README.md", readme);
