@@ -27,19 +27,19 @@ jobs:
         uses: actions/checkout@v3
       - name: Obtener resultado de los tests
         run: |
-            #si no recibe parametros la variable es 1
-            if [ -z "${{ needs.test.outputs.result }}" ]; then
-              echo "resultado_tests=1" >> $GITHUB_ENV
+            #si no recibe parametros el output se setea a  1
+            if [ -z "${{ needs.test.outputs.resultado_tests }}" ]; then
+              echo "::set-output name=resultado_tests::1"
             else
-              echo "resultado_tests=${{ needs.test.outputs.result }}" >> $GITHUB_ENV
+              echo "::set-output name=resultado_tests::${{ needs.test.outputs.resultado_tests }}"
             fi
-        
+           
       - name: Agregar meme al readme
         uses: ./
         with:
           frase_positiva: "Los tests han funcionado y lo sabes"
           frase_negativa: "Los tests han fallado y lo sabes"
-          resultado_tests: ${{ needs.test.outputs.resultado_tests }}
+          resultado_tests: ${{ steps.obtener_resultado.outputs.resultado_tests }}
       - name: Ejecutar código
         run: |
           npm install

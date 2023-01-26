@@ -44592,6 +44592,9 @@ const core = __nccwpck_require__(6643);
 const frase_positiva = core.getInput("frase_positiva");
 const frase_negativa = core.getInput("frase_negativa");
 const resultado_tests = core.getInput("resultado_tests");
+//Coger variable de entorno
+
+
 
 
 run(frase_positiva, frase_negativa, resultado_tests);
