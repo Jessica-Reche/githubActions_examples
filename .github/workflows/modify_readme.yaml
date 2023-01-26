@@ -20,7 +20,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: resultado_tests
-          path: resultado_tests/resultado_tests.txt
+          path: resultado_tests/resultado_tests.txt"
   agregar_meme:
     runs-on: ubuntu-latest
     needs: ejecutar_tests
@@ -31,10 +31,12 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: resultado_tests
+          path: resultado_tests
+
          
       - name: Usar el resultado de los tests desde el artefacto
         run: |
-          resultado_tests=$(cat resultado_tests.txt)
+          resultado_tests=$(cat resultado_tests/resultado_tests.txt)
           echo "::set-output name=resultado_tests::
       - name: Agregar meme al readme
         uses: ./
