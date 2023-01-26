@@ -44599,7 +44599,7 @@ async function run(frase_positiva, frase_negativa, resultado_tests) {
   let texto_inferior;
   let texto;
   try {
-    if (resultado_tests === 0 || resultado_tests === '0') {
+    if (resultado_tests === 0 ) {
       texto_superior = frase_positiva.split("\n")[0];
       texto = 'frase_positiva';
       texto_inferior = frase_positiva.split("\n")[1];
@@ -44608,13 +44608,11 @@ async function run(frase_positiva, frase_negativa, resultado_tests) {
       texto_superior = frase_negativa.split("\n")[0];
       texto_inferior = frase_negativa.split("\n")[1];
     } else {
-      texto = 'variable no definida';
+      texto = resultado_tests;
     }
   } catch (e) {
     console.log(e);
   }
-
-
 
   memeAsync(texto_superior, texto_inferior, "Impact", 30, "")
     .then(json => {
