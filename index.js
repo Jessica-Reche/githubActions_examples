@@ -31,7 +31,7 @@ async function run(frase_positiva, frase_negativa, resultado_tests) {
     memeAsync(texto_superior, texto_inferior, "Impact", 30, "")
 
       .then(json => {
-      
+        const core = require("@actions/core");
        
         if (texto) {
           texto = core.getInput("frase_positiva");
