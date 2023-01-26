@@ -30,7 +30,7 @@ jobs:
           TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB_JESSICA }}
           run: |
             npm install
-            node index.js
+            npm start
       - name: Commit and push 
         run: |
           git config  user.name  Jessica-Reche

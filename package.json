@@ -4,7 +4,8 @@
   "description": "Agrega un meme al readme dependiendo del resultado de los tests",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
