@@ -23,7 +23,7 @@ jobs:
         with:
           frase_positiva: "Los tests han funcionado y lo sabes"
           frase_negativa: "Los tests han fallado y lo sabes"
-          resultado_tests: ${{ steps.test.outputs.test_result }}	
+          resultado_tests: ${{ needs.test.outputs.test_result }}
           TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB_JESSICA }}
           run: |
             npm install
