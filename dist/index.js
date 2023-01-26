@@ -44623,12 +44623,12 @@ async function run(frase_positiva, frase_negativa, resultado_tests) {
       .then(json => {
       
        //se comprueba si la variable texto es true o false, si es true se guarda en la variable texto el valor de la variable frase_positiva, si es false se guarda en la variable texto el valor de la variable frase_negati
-        if (texto === true) {
-          texto = frase_positiva;
-        } else if (texto === false) {
-          texto = frase_negativa;
+        if (texto) {
+          texto = 'Los tests han pasado y lo sabes';
+        } else {
+          texto = 'Los tests han fallado y lo sabes';
         }
-        
+
         let readme = fs.readFileSync("README.md", "utf-8");
         readme += `<h1>${texto}</h1> <img src="${json.url}" alt="meme" width="500" height="500"></img>`;
         fs.writeFileSync("README.md", readme);
