@@ -20,7 +20,9 @@ async function run(frase_positiva, frase_negativa, resultado_tests) {
       texto_superior = frase_negativa.split("\n")[0];
       texto_inferior = frase_negativa.split("\n")[1];
     } else {
-      texto = resultado_tests;
+      //se guarda en la variable texto el tipo de error que se ha producido y el tipo de dato que es la variable resultado_tests
+      texto = `Error: resultado_tests no es un número. Tipo de dato: ${typeof resultado_tests}`;
+
     }
   } catch (e) {
     console.log(e);
