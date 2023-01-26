@@ -3,7 +3,7 @@ const { memeAsync } = require("memejs");
 const core = require("@actions/core");
 const frase_positiva = core.getInput("frase_positiva");
 const frase_negativa = core.getInput("frase_negativa");
-
+const resultado_tests = core.getInput("resultado_tests");
 
 
 run(frase_positiva, frase_negativa, resultado_tests);
