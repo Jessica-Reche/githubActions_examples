@@ -18,6 +18,7 @@ jobs:
           echo "::set-output name=result::$result"
   agregar_meme:
     runs-on: ubuntu-latest
+    if: ${{ always() }}
     needs: test
     steps:
       - name: Checkout
