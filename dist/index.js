@@ -44597,7 +44597,7 @@ async function run() {
   let texto_superior;
   let texto_inferior;
   let texto;
-  if (resultado_tests === 'success') {
+  if (resultado_tests === 0) {
     texto_superior = frase_positiva.split("\n")[0];
     texto=frase_positiva;
     texto_inferior = frase_positiva.split("\n")[1];
