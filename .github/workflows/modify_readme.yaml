@@ -15,23 +15,19 @@ jobs:
           npm test
           result=$?
           #resultado de la ejecución de los tests
-          echo  `::set-output name=result::$result`
-          echo  `::set-env name=TEST_RESULT::$result`
+          echo "::set-output name=result::$result"
   agregar_meme:
     runs-on: ubuntu-latest
     needs: test
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Obtener resultado de los tests
-        run: |
-            resultado_tests=${{ env.TEST_RESULT }}
       - name: Agregar meme al readme
         uses: ./
         with:
           frase_positiva: "Los tests han funcionado y lo sabes"
           frase_negativa: "Los tests han fallado y lo sabes"
-          resultado_tests: ${{ env.resultado_tests }}
+          resultado_tests: ${{ needs.test.outputs.resultado_tests}}
       - name: Ejecutar código
         run: |
           npm install
