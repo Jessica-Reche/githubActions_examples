@@ -12,9 +12,9 @@ jobs:
           npm run build --if-present
           npm test 
           if [ $? -eq 0 ]; then
-            echo "success" > resultado_tests
+            echo "success" > resultado_tests.txt
           else
-            echo "fail" > resultado_tests
+            echo "fail" > resultado_tests.txt
           fi
       - name: Guardar resultado de los test en artefactos
         uses: actions/upload-artifact@v3
@@ -34,7 +34,7 @@ jobs:
           path: resultado_tests
       - name: Usar el resultado de los tests desde el artefacto
         run: |
-          resultado_tests=$(cat resultado_tests/resultado_tests)
+          resultado_tests=$(cat resultado_tests.txt)
           echo "::set-output name=resultado_tests::$resultado_tests"
       - name: Agregar meme al readme
         uses: ./

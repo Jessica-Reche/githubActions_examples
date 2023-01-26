@@ -44591,18 +44591,18 @@ const {memeAsync} = __nccwpck_require__(3062);
 const core = __nccwpck_require__(6643);
 
 async function run() {
-  const frase_positiva = core.getInput("frase_positiva");
-  const frase_negativa = core.getInput("frase_negativa");
+  const frase_positiva = core.getEnv("frase_positiva");
+  const frase_negativa = core.getEnv("frase_negativa");
   const resultado_tests = core.getInput("resultado_tests");
   let texto_superior;
   let texto_inferior;
   let texto;
   if (resultado_tests === 'success') {
     texto_superior = frase_positiva.split("\n")[0];
-    texto="Los tests han funcionado y lo sabes";
+    texto=frase_positiva;
     texto_inferior = frase_positiva.split("\n")[1];
   } else {
-    texto="Los tests han fallado y lo sables";
+    texto=frase_negativa;
     texto_superior = frase_negativa.split("\n")[0];
     texto_inferior = frase_negativa.split("\n")[1];
   }
@@ -44616,7 +44616,7 @@ async function run() {
   }).catch(e => console.log(e));
 }
 
-run();
+run(); 
 })();
 
 module.exports = __webpack_exports__;
