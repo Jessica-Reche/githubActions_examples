@@ -15,7 +15,7 @@ async function run(frase_positiva, frase_negativa, resultado_tests) {
       texto_superior = frase_positiva.split("\n")[0];
       texto = 'frase_positiva';
       texto_inferior = frase_positiva.split("\n")[1];
-    } else if (resultado_tests === 1) {
+    } else if (Number(core.getInput("resultado_tests")) === 1) {
       texto = 'frase_negativa';
       texto_superior = frase_negativa.split("\n")[0];
       texto_inferior = frase_negativa.split("\n")[1];
