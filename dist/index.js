@@ -44589,31 +44589,34 @@ var __webpack_exports__ = {};
 const fs = __nccwpck_require__(7147);
 const { memeAsync } = __nccwpck_require__(3062);
 const core = __nccwpck_require__(6643);
-let texto;
+const frase_positiva = core.getInput("frase_positiva");
+const frase_negativa = core.getInput("frase_negativa");
+const resultado_tests = core.getInput("resultado_tests");
 
-async function run() {
+async function run(frase_positiva, frase_negativa, resultado_tests) {
 
   let texto_superior;
   let texto_inferior;
-  
- 
+  let texto;
   try {
     if (Number(core.getInput("resultado_tests")) === 0  ) {	
       texto_superior = frase_positiva.split("\n")[0];
-      texto ="Los tests han funcionado y lo sabes" ;
-      texto_inferior =core.getInput("frase_positiva").split("\n")[1];
+      texto = 'Los test han funcionado y lo sabes';
+      texto_inferior = frase_positiva.split("\n")[1];
+    } else if (Number(core.getInput("resultado_tests")) === 1) {
+      texto = 'Los test han fallado y lo sabes';
+      texto_superior = frase_negativa.split("\n")[0];
+      texto_inferior = frase_negativa.split("\n")[1];
     } else {
       //se guarda en la variable texto el tipo de error que se ha producido y el tipo de dato que es la variable resultado_tests
-      texto = "Los tests han fallado y lo sabes";
-      texto_superior = getInput("frase_negativa").split("\n")[0];
-      texto_inferior = getInput("frase_negativa").split("\n")[1];
+      texto = `Error: resultado_tests no es un número. Tipo de dato: ${typeof resultado_tests}`;
 
     }
   } catch (e) {
     console.log(e);
   }
 
-  memeAsync(texto,texto_superior, texto_inferior, "Impact", 30, "")
+  memeAsync(texto_superior, texto_inferior, "Impact", 30, "")
     .then(json => {
       let readme = fs.readFileSync("README.md", "utf-8");
       readme += `<h1>${texto}</h1> <img src="${json.url}" alt="meme" width="500" height="500"></img>`;
@@ -44622,7 +44625,7 @@ async function run() {
     }).catch(e => console.log(e));
 }
 
-run(); 
+run(frase_positiva, frase_negativa, resultado_tests); 
 })();
 
 module.exports = __webpack_exports__;
