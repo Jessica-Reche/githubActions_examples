@@ -14,7 +14,7 @@ jobs:
           npm install
           npm test
           #resultado de la ejecución de los tests
-          "echo "::set-output name=resultado_tests::$(npm test)""
+          echo "::set-output name=resultado_tests::$(npm test)"
     
 
           
