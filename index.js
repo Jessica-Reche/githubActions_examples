@@ -3,13 +3,14 @@ const {memeAsync} = require("memejs");
 const core = require("@actions/core");
 
 async function run() {
-  const frase_positiva = core.getEnv("frase_positiva");
-  const frase_negativa = core.getEnv("frase_negativa");
-  const resultado_tests = core.getInput("resultado_tests");
+  const frase_positiva = process.env.frase_positiva;
+  const frase_negativa = process.env.frase_negativa;
+  const resultado_tests = process.env.resultado_tests;
   let texto_superior;
   let texto_inferior;
   let texto;
-  if (resultado_tests === 'success') {
+  
+  if (resultado_tests == 0) {
     texto_superior = frase_positiva.split("\n")[0];
     texto=frase_positiva;
     texto_inferior = frase_positiva.split("\n")[1];
