@@ -16,30 +16,23 @@ jobs:
           result=$?
           #resultado de la ejecución de los tests
           echo "::set-output name=result::$result"
-          echo "::set-env name=TEST_RESULT::$result"
-
   agregar_meme:
     runs-on: ubuntu-latest
+    if: ${{ always() }}}
+    needs: test
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Obtener resultado de los tests
-        run: |
-            resultado_tests=${{ env.TEST_RESULT }}
       - name: Agregar meme al readme
         uses: ./
         with:
           frase_positiva: "Los tests han funcionado y lo sabes"
           frase_negativa: "Los tests han fallado y lo sabes"
-          resultado_tests: ${{ env.resultado_tests }}
-      - name: Ejecutar código
-        run: |
-          npm install
-          npm start
-      - name: Commit and push
+          resultado_tests: ${{ needs.test.outputs.resultado_tests}}
+      - name: Commit and push 
         run: |
           git config  user.name  Jessica-Reche
           git config  user.email jessikareix20@gmail.com
           git add .
           git commit -m"Agregar meme al readme"
-          git push https://${{ secrets.TOKEN_GITHUB_JESSICA }}@github.com/Jessica-Reche/githubActions_examples.git
+          git push https://${{ secrets.TOKEN_GITHUB_JESSICA }}@github.com/Jessica-Reche/githubActions_examples.git 
