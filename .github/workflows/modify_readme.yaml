@@ -20,6 +20,7 @@ jobs:
 
   agregar_meme:
     runs-on: ubuntu-latest
+    if: ${{ always() }}
     needs: test
     steps:
       - name: Checkout
