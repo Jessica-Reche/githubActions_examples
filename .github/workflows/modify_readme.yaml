@@ -17,9 +17,8 @@ jobs:
           result=$?
           #resultado de la ejecución de los tests
           echo "::set-output name=result::$result"
-      - name: set environment file
-        run: |
           echo "TEST_RESULT=${{ steps.test_job.outputs.result }}" >> $GITHUB_ENV
+     
   agregar_meme:
     runs-on: ubuntu-latest 
     if: ${{ always() }}
