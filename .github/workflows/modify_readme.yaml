@@ -30,8 +30,8 @@ jobs:
           resultado_tests: ${{ needs.test.outputs.resultado_tests}}
           
         run: |
-          npm install
-          npm start
+            npm install
+            npm start
       - name: Commit and push 
         run: |
           git config  user.name  Jessica-Reche
