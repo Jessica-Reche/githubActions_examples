@@ -4,7 +4,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     outputs:
-      output1: ${{ steps.test_job.outputs.result }}
+      resultado_tests: ${{ steps.test_job.outputs.result }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -27,7 +27,7 @@ jobs:
         with:
           frase_positiva: "Los tests han funcionado y lo sabes"
           frase_negativa: "Los tests han fallado y lo sabes"
-          resultado_tests: ${{ needs.test.outputs.output1}}
+          resultado_tests: ${{ needs.test.outputs.resultado_tests}}
           TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB_JESSICA }}
           run: |
             npm install
