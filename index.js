@@ -9,16 +9,15 @@ async function run() {
   let texto_inferior;
   let texto;
   try {
-    if (Number(core.getInput("resultado_tests")) === 0) {
+    if (Number(core.getInput("resultado_tests")) === 0  ) {	
       texto_superior = frase_positiva.split("\n")[0];
-      texto_inferior = core.getInput("frase_positiva").split("\n")[1];
-      texto = texto_superior;
+      texto ="Los tests han funcionado y lo sabes" ;
+      texto_inferior =core.getInput("frase_positiva").split("\n")[1];
     } else {
       //se guarda en la variable texto el tipo de error que se ha producido y el tipo de dato que es la variable resultado_tests
-      
+      texto = "Los tests han fallado y lo sabes";
       texto_superior = getInput("frase_negativa").split("\n")[0];
       texto_inferior = getInput("frase_negativa").split("\n")[1];
-      texto = texto_superior;
 
     }
   } catch (e) {
