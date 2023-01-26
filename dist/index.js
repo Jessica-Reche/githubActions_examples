@@ -44589,11 +44589,12 @@ var __webpack_exports__ = {};
 const fs = __nccwpck_require__(7147);
 const {memeAsync} = __nccwpck_require__(3062);
 const core = __nccwpck_require__(6643);
+const frase_positiva = core.getInput("frase_positiva");
+const frase_negativa = core.getInput("frase_negativa");
+const resultado_tests = core.getInput("resultado_tests");
 
 async function run() {
-  const frase_positiva = core.getInput("frase_positiva");
-  const frase_negativa = core.getInput("frase_negativa");
-  const resultado_tests = core.getInput("resultado_tests");
+
   let texto_superior;
   let texto_inferior;
   let texto;
