@@ -11,13 +11,14 @@ async function run() {
   try {
     if (Number(core.getInput("resultado_tests")) === 0) {
       texto_superior = frase_positiva.split("\n")[0];
-      texto = core.getInput("frase_positiva");
       texto_inferior = core.getInput("frase_positiva").split("\n")[1];
+      texto = texto_superior;
     } else {
       //se guarda en la variable texto el tipo de error que se ha producido y el tipo de dato que es la variable resultado_tests
-      texto = core.getInput("frase_negativa");
+      
       texto_superior = getInput("frase_negativa").split("\n")[0];
       texto_inferior = getInput("frase_negativa").split("\n")[1];
+      texto = texto_superior;
 
     }
   } catch (e) {
