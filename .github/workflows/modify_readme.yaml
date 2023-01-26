@@ -17,8 +17,9 @@ jobs:
           #resultado de la ejecución de los tests
           echo "::set-output name=result::$result"
   agregar_meme:
-    runs-on: ubuntu-latest
+    if: ${{always()}}
     needs: test
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
