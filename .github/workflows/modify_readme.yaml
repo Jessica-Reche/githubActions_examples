@@ -35,8 +35,9 @@ jobs:
          
       - name: Usar el resultado de los tests desde el artefacto
         run: |
-          resultado_tests=$(cat resultado_tests/resultado_tests.txt)
-          echo "::set-output name=resultado_tests::
+          resultado_tests=$(cat resultado_tests.txt)
+          echo "::set-output name=resultado_tests::$resultado_tests"
+
       - name: Agregar meme al readme
         uses: ./
         env:
