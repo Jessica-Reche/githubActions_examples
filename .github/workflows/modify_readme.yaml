@@ -3,7 +3,6 @@ on: [push]
 jobs:
   test:
     runs-on: ubuntu-latest
-    continue-on-error: true
     outputs:
       resultado_tests: ${{ steps.test_job.outputs.result }}
     steps:
@@ -19,7 +18,6 @@ jobs:
           echo "::set-output name=result::$result"
   agregar_meme:
     runs-on: ubuntu-latest
-    if: ${{ always() }}
     needs: test
     steps:
       - name: Checkout
@@ -29,7 +27,7 @@ jobs:
         with:
           frase_positiva: "Los tests han funcionado y lo sabes"
           frase_negativa: "Los tests han fallado y lo sabes"
-          resultado_tests: ${{ steps.test.outputs.resultado_tests}}
+          resultado_tests: ${{ needs.test.outputs.resultado_tests}}
       - name: Ejecutar código
         run: |
           npm install
