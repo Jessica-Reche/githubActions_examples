@@ -1,1 +1,0 @@
-<h1>Los tests han pasado y lo sabes</h1> <img src="https://i.redd.it/gpbd4grgygea1.jpg" alt="meme" width="500" height="500"></img>

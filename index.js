@@ -18,7 +18,7 @@ async function run(frase_positiva, frase_negativa) {
     let texto = false;
     if (Number(core.getInput("resultado_tests")) === 0) {
       texto_superior = frase_positiva.split("\n")[0];
-      texto = 'Los tests han pasado y lo sabes';
+      texto = 'Los tests han funcionado y lo sabes';
       texto_inferior = frase_positiva.split("\n")[1];
     } else {
       texto = 'Los tests han fallado y lo sabes';
