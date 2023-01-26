@@ -33,12 +33,10 @@ jobs:
             npm install
             npm start
       - name: Commit and push 
-        env:
-         TOKEN_GITHUB_JESSICA: ${{ secrets.TOKEN_GITHUB_JESSICA }}
         run: |
           git config  user.name  Jessica-Reche
           git config  user.email jessikareix20@gmail.com
           git add .
           git commit -m"Agregar meme al readme"
-          git push https://$TOKEN_GITHUB_JESSICA@github.com/Jessica-Reche/githubActions_examples.git
+          git push https://${{ secrets.TOKEN_GITHUB_JESSICA }}@github.com/Jessica-Reche/githubActions_examples.git
        
