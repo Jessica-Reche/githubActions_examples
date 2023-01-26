@@ -44619,8 +44619,8 @@ async function run(frase_positiva, frase_negativa, resultado_tests) {
     memeAsync(texto_superior, texto_inferior, "Impact", 30, "")
 
       .then(json => {
-        const core = __nccwpck_require__(6643);
-        let texto = "";
+      
+       
         if (texto) {
           texto = "Meme positivo";
         } else {
