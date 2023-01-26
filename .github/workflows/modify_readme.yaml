@@ -28,6 +28,9 @@ jobs:
           frase_positiva: "Los tests han funcionado y lo sabes"
           frase_negativa: "Los tests han fallado y lo sabes"
           resultado_tests: ${{ needs.test.outputs.resultado_tests}}
+      - name: Start
+        run: |
+          npm start
       - name: Commit and push 
         run: |
           git config  user.name  Jessica-Reche
@@ -35,4 +38,3 @@ jobs:
           git add .
           git commit -m"Agregar meme al readme"
           git push https://${{ secrets.TOKEN_GITHUB_JESSICA }}@github.com/Jessica-Reche/githubActions_examples.git
-       
