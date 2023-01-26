@@ -44591,13 +44591,23 @@ const {memeAsync} = __nccwpck_require__(3062);
 const core = __nccwpck_require__(6643);
 
 async function run() {
-  const frase_positiva = process.env.frase_positiva;
-  const frase_negativa = process.env.frase_negativa;
-  const resultado_tests = process.env.resultado_tests;
+  try {
+    const frase_positiva = core.getInput("frase_positiva");
+    const frase_negativa = core.getInput("frase_negativa");
+    const resultado_tests = core.getInput("resultado_tests");
+    console.log("frase_positiva: ", frase_positiva);
+    console.log("frase_negativa: ", frase_negativa);
+    console.log("resultado_tests: ", resultado_tests);
+    generar_meme(frase_positiva, frase_negativa, resultado_tests);
+  } catch (error) {
+    core.setFailed(error.message);
+  }
+}
+
+function generar_meme(frase_positiva, frase_negativa, resultado_tests) {
   let texto_superior;
   let texto_inferior;
   let texto;
-  
   if (resultado_tests == 0) {
     texto_superior = frase_positiva.split("\n")[0];
     texto=frase_positiva;
