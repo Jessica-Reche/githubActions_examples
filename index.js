@@ -27,7 +27,7 @@ async function run(frase_positiva, frase_negativa, resultado_tests) {
       //se guarda en la variable texto el tipo de error que se ha producido y el tipo de dato que es la variable resultado_tests
       texto = `Error: resultado_tests no es un número. Tipo de dato: ${typeof resultado_tests}`;
     }
-    texto = texto ? texto_positivo : texto_negativo;
+    texto = texto ? frase_positiva : frase_negativa;
     memeAsync(texto_superior, texto_inferior, "Impact", 30, "")
 
       .then(json => {
