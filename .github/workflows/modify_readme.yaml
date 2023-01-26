@@ -2,7 +2,6 @@ name: "modify_readme"
 on: [push]
 jobs:
   test:
-    
     runs-on: ubuntu-latest
     continue-on-error: true
     outputs:
@@ -17,25 +16,23 @@ jobs:
           npm test
           result=$?
           #resultado de la ejecución de los tests
-          echo `::set-output name=result::$result`
-          echo `::set-env name=TEST_RESULT::$result`
+          `echo ::set-output name=result::$result`
+          `echo ::set-env name=TEST_RESULT::$result`
   agregar_meme:
     runs-on: ubuntu-latest
-    if: ${{ always() }}
     needs: test
     steps:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Obtener resultado de los tests
         run: |
-            #Se establece una variable donde se guarda 0 si el test ha funcionado y 1 si ha fallado
-            echo "RESULTADO_TESTS=$TEST_RESULT" >> $GITHUB_ENV
+            resultado_tests=${{ env.TEST_RESULT }}
       - name: Agregar meme al readme
         uses: ./
         with:
           frase_positiva: "Los tests han funcionado y lo sabes"
           frase_negativa: "Los tests han fallado y lo sabes"
-          resultado_tests: ${{ env.RESULTADO_TESTS }}
+          resultado_tests: ${{ env.resultado_tests }}
       - name: Ejecutar código
         run: |
           npm install
