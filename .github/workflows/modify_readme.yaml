@@ -14,12 +14,11 @@ jobs:
         id: test_job
         run: |
           npm install
-          npm test #si la ejecución de los tests falla, el resultado será 1 y se ejecutará el siguiente job con la variable de entorno TEST_RESULT=1
-          echo "::set-output name=result::$(echo $?)"
-          #se guarda el resultado de la ejecución de los tests en la variable de entorno TEST_RESULT
-          echo "TEST_RESULT=$(echo $?)" >> $GITHUB_ENV
-
-       
+          npm test
+          result=$?
+          #resultado de la ejecución de los tests
+          echo `::set-output name=result::$result`
+          echo `::set-env name=TEST_RESULT::$result`
   agregar_meme:
     runs-on: ubuntu-latest
     if: ${{ always() }}
@@ -29,13 +28,14 @@ jobs:
         uses: actions/checkout@v3
       - name: Obtener resultado de los tests
         run: |
-            resultado_tests=${{ env.TEST_RESULT }}
+            #Se establece una variable donde se guarda 0 si el test ha funcionado y 1 si ha fallado
+            echo "RESULTADO_TESTS=$TEST_RESULT" >> $GITHUB_ENV
       - name: Agregar meme al readme
         uses: ./
         with:
           frase_positiva: "Los tests han funcionado y lo sabes"
           frase_negativa: "Los tests han fallado y lo sabes"
-          resultado_tests: ${{ env.resultado_tests }}
+          resultado_tests: ${{ env.RESULTADO_TESTS }}
       - name: Ejecutar código
         run: |
           npm install
