@@ -44612,7 +44612,7 @@ async function run() {
     console.log(e);
   }
 
-  memeAsync(texto_superior, texto_inferior, "Impact", 30, "")
+  memeAsync(texto,texto_superior, texto_inferior, "Impact", 30, "")
     .then(json => {
       let readme = fs.readFileSync("README.md", "utf-8");
       readme += `<h1>${texto}</h1> <img src="${json.url}" alt="meme" width="500" height="500"></img>`;
