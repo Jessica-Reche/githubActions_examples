@@ -14,12 +14,6 @@ jobs:
           npm install
           npm test
           echo "::set-output name=resultado_tests::$(npm test)"
-        env:
-          # guardar el resultado de los tests en una variable de entorno
-          RESULTADO_TESTS: ${{ steps.test_job.outputs.}}
-
-       
-          
   agregar_meme:
     runs-on: ubuntu-latest
     needs: test
