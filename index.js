@@ -11,7 +11,7 @@ async function run(frase_positiva, frase_negativa, resultado_tests) {
   let texto_inferior;
   let texto;
   try {
-    if (resultado_tests === 0 || resultado_tests == "0") {	
+    if (parseInt(resultado_tests) === 0  ) {	
       texto_superior = frase_positiva.split("\n")[0];
       texto = 'frase_positiva';
       texto_inferior = frase_positiva.split("\n")[1];
