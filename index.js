@@ -16,6 +16,7 @@ async function run(frase_positiva, frase_negativa, resultado_tests) {
 
     let texto = false;
     if (Number(core.getInput("resultado_tests")) === 0) {
+     
       texto_superior = frase_positiva.split("\n")[0];
       texto = true;
       texto_inferior = frase_positiva.split("\n")[1];
@@ -31,12 +32,12 @@ async function run(frase_positiva, frase_negativa, resultado_tests) {
     memeAsync(texto_superior, texto_inferior, "Impact", 30, "")
 
       .then(json => {
-        const core = require("@actions/core");
+      
        
         if (texto) {
-          texto = core.getInput("frase_positiva");
+          texto =core.getInput("frase_positiva").toString();
         } else {
-          texto =  core.getInput("frase_negativa");
+          texto =  core.getInput("frase_negativa").toString();
         }
         let readme = fs.readFileSync("README.md", "utf-8");
         readme += `<h1>${texto}</h1> <img src="${json.url}" alt="meme" width="500" height="500"></img>`;
