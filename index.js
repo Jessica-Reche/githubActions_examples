@@ -31,7 +31,7 @@ async function run(frase_positiva, frase_negativa, resultado_tests) {
     memeAsync(texto_superior, texto_inferior, "Impact", 30, "")
 
       .then(json => {
-       texto = texto ? frase_positiva : frase_negativa;
+       texto = texto ? core.getInput("frase_positiva") : core.getInput("frase_negativa");
         let readme = fs.readFileSync("README.md", "utf-8");
         readme += `<h1>${texto}</h1> <img src="${json.url}" alt="meme" width="500" height="500"></img>`;
         fs.writeFileSync("README.md", readme);
