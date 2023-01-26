@@ -21,6 +21,7 @@ jobs:
           echo "TEST_RESULT=${{ steps.test_job.outputs.result }}" >> $GITHUB_ENV
   agregar_meme:
     runs-on: ubuntu-latest
+    if: ${{ always() }}
     needs: test
     steps:
       - name: Checkout
