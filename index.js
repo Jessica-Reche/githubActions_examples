@@ -3,8 +3,8 @@ const {memeAsync} = require("memejs");
 const core = require("@actions/core");
 
 async function run() {
-  const frase_positiva = core.getEnv("frase_positiva");
-  const frase_negativa = core.getEnv("frase_negativa");
+  const frase_positiva = core.getInput("frase_positiva");
+  const frase_negativa = core.getInput("frase_negativa");
   const resultado_tests = core.getInput("resultado_tests");
   let texto_superior;
   let texto_inferior;
