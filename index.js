@@ -21,22 +21,24 @@ class Meme {
       this.texto_superior = this.frase_negativa.split("\n")[0];
       this.texto_inferior = this.frase_positiva.split("\n")[1];
 
-    }else{
-      this.testNegativo();
     }
   }
 
   async testNegativo() {
+    if (this.resultado_tests === 1) {
       this.subreddit = 'sad';
       this.texto_superior = this.frase_negativa.split("\n")[0];
       this.texto = "Los tests no han funcionado y lo sabes";
       this.texto_inferior = this.frase_negativa.split("\n")[1];
-    
+    }
   }
 
   async run() {
-    await this.testPositivo();
-   
+    if (this.resultado_tests === 0) {
+      await this.testPositivo();
+    } else if (this.resultado_tests === 1) {
+      await this.testNegativo();
+    }
     try {
       const json = await memeAsync();
       json.subreddit = this.subreddit;
