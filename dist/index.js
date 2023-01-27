@@ -44597,14 +44597,14 @@ const resultado_tests = core.getInput("resultado_tests");
 
 
 
-run(frase_positiva, frase_negativa, resultado_tests);
+
 
 async function run(frase_positiva, frase_negativa) {
 
   let texto_superior;
   let texto_inferior;
   let texto;
-  try {
+
 
    
     if (Number(core.getInput("resultado_tests")) === 0 || Number(core.getInput("resultado_tests")) === 1) {
@@ -44636,10 +44636,9 @@ async function run(frase_positiva, frase_negativa) {
         console.log("Meme añadido al readme");
       }).catch(e => console.log(e));
 
-  } catch (e) {
-    console.log(e);
-  }
+ 
 };
+run(frase_positiva, frase_negativa, resultado_tests);
 })();
 
 module.exports = __webpack_exports__;
