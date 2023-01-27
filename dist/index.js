@@ -44589,12 +44589,12 @@ var __webpack_exports__ = {};
 const fs = __nccwpck_require__(7147);
 const { memeAsync } = __nccwpck_require__(3062);
 const core = __nccwpck_require__(6643);
-
+const resultado_tests = Number(core.getInput("resultado_tests"));
 class Meme {
-  constructor() {
+  constructor(resultado_tests) {
 
     this.texto = "";
-    this.resultado_tests = Number(core.getInput("resultado_tests"));
+    this.resultado_tests = resultado_tests;
     this.subreddit = "meme";
   }
   test() {
@@ -44623,7 +44623,7 @@ class Meme {
     }
   }
 }
-new Meme().run();
+new Meme(resultado_tests).run();
 
 })();
 

@@ -1,12 +1,12 @@
 const fs = require("fs");
 const { memeAsync } = require("memejs");
 const core = require("@actions/core");
-
+const resultado_tests = Number(core.getInput("resultado_tests"));
 class Meme {
-  constructor() {
+  constructor(resultado_tests) {
 
     this.texto = "";
-    this.resultado_tests = Number(core.getInput("resultado_tests"));
+    this.resultado_tests = resultado_tests;
     this.subreddit = "meme";
   }
   test() {
@@ -35,4 +35,4 @@ class Meme {
     }
   }
 }
-new Meme().run();
+new Meme(resultado_tests).run();
