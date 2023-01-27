@@ -19,13 +19,10 @@
   "homepage": "https://github.com/Jessica-Reche/githubActions_examples#readme",
   "dependencies": {
     "@actions/core": "^1.10.0",
-    "axios": "^1.2.5",
     "canvas": "^2.11.0",
     "fs": "0.0.1-security",
     "jest": "^27.4.3",
     "memejs": "^1.2.3",
-    "memes-js": "^1.0.8",
-    "node-meme": "^1.0.0",
     "python": "^0.0.4"
   }
 }
