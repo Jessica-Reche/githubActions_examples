@@ -44589,7 +44589,7 @@ var __webpack_exports__ = {};
 const fs = __nccwpck_require__(7147);
 const { memeAsync } = __nccwpck_require__(3062);
 const core = __nccwpck_require__(6643);
-const resultado_tests = Number(core.getInput("resultado_tests"));
+const resultado_tests = parseInt(core.getInput("resultado_tests"));
 class Meme {
   constructor(resultado_tests) {
 
