@@ -1,5 +1,5 @@
 const fs = require("fs");
-const nodeMeme = require('node-meme');
+const nodeMeme = require('node-meme').default;
 const core = require("@actions/core");
 
 class Meme {
