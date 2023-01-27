@@ -36,7 +36,7 @@ class Meme {
       fs.writeFileSync("README.md", readme);
       console.log("Meme añadido al readme");
     } catch (e) {
-      console.log(e);
+      console.log(e); 
     }
   }
 }
