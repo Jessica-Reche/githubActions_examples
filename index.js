@@ -10,7 +10,7 @@ class Meme {
     this.frase_positiva = core.getInput("frase_positiva");
     this.frase_negativa = core.getInput("frase_negativa");
     this.resultado_tests = Number(core.getInput("resultado_tests"));
-    this.subreddit = "ProgrammerHumor"
+    this.subreddit = "memes";
   }
 
   async testPositivo() {
