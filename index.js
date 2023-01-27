@@ -37,7 +37,9 @@ class Meme {
         let readme = fs.readFileSync("README.md", "utf-8");
         fs.writeFileSync("README.md", readme);
       console.log("Meme añadido al readme");
-    })
+    }).catch(err => {
+      console.log(err);
+    });
       
       
     } catch (e) {
