@@ -1,6 +1,6 @@
 const fs = require("fs");
-const { memes } = require("meme-js");
 const core = require("@actions/core");
+const axios = require('axios');
 
 class Meme {
   constructor() {
@@ -30,7 +30,8 @@ class Meme {
   async run() {
     await this.test();
     try {
-      const json = await memes.getMeme(this.subreddit);
+      const response = await axios.get(`https://meme-api.herokuapp.com/gimme/${this.subreddit}`);
+      const json = response.data;
       let readme = fs.readFileSync("README.md", "utf-8");
       readme += `<h1>${this.texto}</h1> <img src="${json.url}" alt="meme" width="500" height="500"></img>`;
       fs.writeFileSync("README.md", readme);
