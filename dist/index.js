@@ -6878,18 +6878,15 @@ class Meme {
   async run() {
     await this.test();
     try {
-
+      let readme = fs.readFileSync("README.md", "utf-8");
       nodeMeme.requestmeme(this.meme_name).then(img => {
         console.log(img);
         readme += `<h1>${this.texto}</h1> <img src="${img}" alt="meme" width="500" height="500"></img>`;
-        let readme = fs.readFileSync("README.md", "utf-8");
         fs.writeFileSync("README.md", readme);
         console.log("Meme añadido al readme");
       }).catch(err => {
         throw new Error(err);
       });
-
-
     } catch (e) {
       throw new Error(e);
     }
