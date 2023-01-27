@@ -28,9 +28,9 @@ class Meme {
 }
 
   async run() {
-   this.test();
+   await this.test();
     try {
-      const json = await nodeMeme.generate(this.meme_name, this.texto);
+      const json = await nodeMeme.requestmeme(this.meme_name);
       let readme = fs.readFileSync("README.md", "utf-8");
       readme += `<h1>${this.texto}</h1> <img src="${json.url}" alt="meme" width="500" height="500"></img>`;
       fs.writeFileSync("README.md", readme);
