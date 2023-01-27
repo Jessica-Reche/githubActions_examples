@@ -44603,7 +44603,7 @@ class Meme {
 
   test() {
     if (this.resultado_tests === 0) {
-      if (this.frase_positiva !== 1) {
+      if (this.resultado_tests!== 1) {
         this.subreddit = 'happy';
         this.texto = "Los tests han funcionado y lo sabes";
 
