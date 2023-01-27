@@ -1,1 +1,1 @@
-<h1>Los tests han funcionado y lo sabes</h1> <img src="https://i.redd.it/jr9uv0s4ymea1.gif" alt="meme" width="500" height="500"></img>
+<h1>Los tests han funcionado y lo sabes</h1> <img src="https://i.redd.it/iqak9fewox9a1.jpg" alt="meme" width="500" height="500"></img>
