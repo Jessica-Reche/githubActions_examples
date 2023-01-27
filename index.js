@@ -2,11 +2,10 @@ const fs = require("fs");
 const { memeAsync } = require("memejs");
 const core = require("@actions/core");
 const resultado_tests = parseInt(core.getInput("resultado_tests"));
-const frase_positiva = core.getInput("frase_positiva");
-const frase_negativa = core.getInput("frase_negativa");
+const frase_positiva = core.getInput("frase_positiva").toString();
+const frase_negativa = core.getInput("frase_negativa").toString();
 class Meme {
   constructor(resultado_tests, frase_positiva, frase_negativa) {
-
     this.texto = "";
     this.resultado_tests = resultado_tests;
     this.frase_positiva = frase_positiva;
@@ -17,11 +16,9 @@ class Meme {
     if (this.resultado_tests === 0) {
       if (this.resultado_tests!== 1) {
         this.subreddit = this.frase_positiva;
-        this.texto = "Los tests han funcionado y lo sabes";
       }
     } else {
       this.subreddit = this.frase_negativa;
-      this.texto = "Los tests no han funcionado y lo sabes";
     }
   }
   async run() {
