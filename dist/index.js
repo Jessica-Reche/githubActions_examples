@@ -44593,7 +44593,7 @@ class Meme {
   constructor() {
     this.texto ;
     this.subreddit = "meme";
-    this.resultado_tests = Number(core.getInput("resultado_tests")) ;
+    this.resultado_tests = Number(core.getInput("resultado_tests"))===1?false:true ;
   }
   
   async run() {
