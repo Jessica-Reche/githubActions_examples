@@ -44592,16 +44592,16 @@ const core = __nccwpck_require__(6643);
 
 class Meme {
   constructor() {
-    this.texto = "";
+    this.texto ;
     this.subreddit = "meme";
   }
   
   async run() {
     try {
-      const resultado_tests = Number(core.getInput("resultado_tests"));
+   
       console.log(`Valor de resultado_tests: ${resultado_tests}`); // Verificar el valor de la variable
 
-      if (resultado_tests == 0) {
+      if (Number(core.getInput("resultado_tests") == 0)) {
         this.subreddit = 'happy';
         this.texto = "Los tests han funcionado y lo sabes";
       } else {
