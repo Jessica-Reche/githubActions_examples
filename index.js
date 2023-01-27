@@ -38,9 +38,6 @@ class Meme {
     await this.testNegativo();
     try {
       const json = await memeAsync();
-      json.catch((error) => {
-        console.log(error);
-      })
       json.subreddit = this.subreddit;
       json.title = this.subreddit;
       let readme = fs.readFileSync("README.md", "utf-8");
