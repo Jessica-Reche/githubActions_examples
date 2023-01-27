@@ -44594,26 +44594,20 @@ class Meme {
   constructor() {
 
     this.texto = "";
-    this.texto_inferior = "";
     this.resultado_tests = Number(core.getInput("resultado_tests"));
     this.subreddit = "";
   }
-
-
   test() {
     if (this.resultado_tests === 0) {
       if (this.resultado_tests!== 1) {
         this.subreddit = 'happy';
         this.texto = "Los tests han funcionado y lo sabes";
-
       }
     } else {
       this.subreddit = 'sad';
       this.texto = "Los tests no han funcionado y lo sabes";
-
     }
   }
-
   async run() {
     this.test();
     try {
@@ -44629,7 +44623,6 @@ class Meme {
     }
   }
 }
-
 const meme = new Meme();
 meme.run();
 })();
