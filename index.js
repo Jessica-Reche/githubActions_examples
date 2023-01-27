@@ -35,5 +35,4 @@ class Meme {
     }
   }
 }
-const meme = new Meme();
-meme.run();
+new Meme().run();

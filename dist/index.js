@@ -44623,8 +44623,8 @@ class Meme {
     }
   }
 }
-const meme = new Meme();
-meme.run();
+new Meme().run();
+
 })();
 
 module.exports = __webpack_exports__;
