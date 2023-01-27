@@ -1,7 +1,7 @@
 const fs = require("fs");
 const { memeAsync } = require("memejs");
 const core = require("@actions/core");
-const resultado_tests = parseInt(core.getInput("resultado_tests"));
+const resultado_tests = Number(core.getInput("resultado_tests"));
 
 class Meme {
   constructor(resultado_tests) {
