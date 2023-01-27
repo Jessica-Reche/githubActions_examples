@@ -44599,7 +44599,7 @@ class Meme {
   async run() {
     try {
       const json = await memeAsync();
-      json.subreddit = this.resultado_tests === 1 ? this.subreddit = 'happy' : this.subreddit = 'sad';
+      json.subreddit = this.resultado_tests ? this.subreddit = 'sad' : this.subreddit = 'happy';
      
       json.title = this.subreddit;
       let readme = fs.readFileSync("README.md", "utf-8");
