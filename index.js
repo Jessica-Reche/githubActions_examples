@@ -13,12 +13,10 @@ class Meme {
     this.resultado_tests = parseInt(core.getInput("resultado_tests")) ;
     this.subreddit = "";
   }
-  getResultado_tests() {
-    return this.resultado_tests;
-  }
+
 
    test() {
-    if ( getResultado_tests() === 0) {
+    if (this.resultado_tests === 0) {
         this.subreddit = 'happy';
         this.texto = "Los tests han funcionado y lo sabes";
         this.texto_superior = this.frase_negativa.split("\n")[0];
