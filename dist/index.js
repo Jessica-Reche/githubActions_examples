@@ -44604,11 +44604,12 @@ class Meme {
 
 
    test() {
-    if (this.resultado_tests === 0) {
+    if (this.resultado_tests === 0 ) {
+      if (this.frase_positiva !== 1) {
         this.subreddit = 'happy';
         this.texto = "Los tests han funcionado y lo sabes";
         this.texto_superior = this.frase_negativa.split("\n")[0];
-        this.texto_inferior = this.frase_positiva.split("\n")[1];
+        this.texto_inferior = this.frase_positiva.split("\n")[1];}
     } else {
         this.subreddit = 'sad';
         this.texto_superior = this.frase_negativa.split("\n")[0];
