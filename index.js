@@ -11,11 +11,11 @@ class Meme {
   async run() {
     try {
       const json = await memeAsync();
-      json.subreddit = this.resultado_tests ? this.subreddit = 'sad' : this.subreddit = 'happy';
+      json.subreddit = this.resultado_tests ?  'sad' :'happy';
      
       json.title = this.subreddit;
       let readme = fs.readFileSync("README.md", "utf-8");
-      readme = `<h1>${ this.texto = this.resultado_tests ? this.texto = "Los tests han funcionado y lo sabes" : this.texto = "Los tests han fallado y lo sabes"}</h1> <img src="${json.url}" alt="meme" width="500" height="500"></img>`;
+      readme = `<h1>${ this.texto = this.resultado_tests ?  "Los tests han funcionado y lo sabes" :"Los tests han fallado y lo sabes"}</h1> <img src="${json.url}" alt="meme" width="500" height="500"></img>`;
       fs.writeFileSync("README.md", readme);
       console.log("Meme añadido al readme");
     } catch (e) {
