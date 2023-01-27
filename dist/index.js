@@ -44590,28 +44590,23 @@ const fs = __nccwpck_require__(7147);
 const { memeAsync } = __nccwpck_require__(3062);
 const core = __nccwpck_require__(6643);
 const resultado_tests = parseInt(core.getInput("resultado_tests"));
-const frase_positiva = core.getInput("frase_positiva");
-const frase_negativa = core.getInput("frase_negativa");
+
 class Meme {
-  constructor(resultado_tests, frase_positiva, frase_negativa) {
+  constructor(resultado_tests) {
 
     this.texto = "";
     this.resultado_tests = resultado_tests;
     this.subreddit = "meme";
-    this.frase_positiva = frase_positiva;
-    this.frase_negativa = frase_negativa;
-    
   }
   test() {
     if (this.resultado_tests === 0) {
       if (this.resultado_tests!== 1) {
         this.subreddit = 'happy';
-        
-        this.texto = frase_positiva;
+        this.texto = "Los tests han funcionado y lo sabes";
       }
     } else {
       this.subreddit = 'sad';
-      this.texto = frase_negativa;
+      this.texto = "Los tests no han funcionado y lo sabes";
     }
   }
   async run() {
@@ -44629,7 +44624,7 @@ class Meme {
     }
   }
 }
-new Meme(resultado_tests,frase_positiva,frase_negativa).run();
+new Meme(resultado_tests).run();
 
 })();
 
