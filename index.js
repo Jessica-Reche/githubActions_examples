@@ -1,31 +1,21 @@
 const fs = require("fs");
 const { memeAsync } = require("memejs");
 const core = require("@actions/core");
-
 class Meme {
   constructor() {
     this.texto ;
     this.subreddit = "meme";
+    this.resultado_tests = Number(core.getInput("resultado_tests")) ;
   }
   
   async run() {
     try {
-   
-  
-      if (Number(core.getInput("resultado_tests") == 0)) {
-        this.subreddit = 'happy';
-        this.texto = "Los tests han funcionado y lo sabes";
-        console.log(this.texto);
-      } else {
-        this.subreddit = 'sad';
-        this.texto = "Los tests no han funcionado y lo sabes";
-      }
-
       const json = await memeAsync();
-      json.subreddit = this.subreddit;
+      json.subreddit = this.resultado_tests === 1 ? this.subreddit = 'happy' : this.subreddit = 'sad';
+     
       json.title = this.subreddit;
       let readme = fs.readFileSync("README.md", "utf-8");
-      readme = `<h1>${this.texto}</h1> <img src="${json.url}" alt="meme" width="500" height="500"></img>`;
+      readme = `<h1>${ this.texto = this.resultado_tests === 1 ? this.texto = "Los tests han funcionado y lo sabes" : this.texto = "Los tests no han funcionado y lo sabes"}</h1> <img src="${json.url}" alt="meme" width="500" height="500"></img>`;
       fs.writeFileSync("README.md", readme);
       console.log("Meme añadido al readme");
     } catch (e) {
