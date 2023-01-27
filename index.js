@@ -1,5 +1,5 @@
 const fs = require("fs");
-const memes = require("random-memes");
+const { memeAsync } = require("memejs");
 const core = require("@actions/core");
 
 class Meme {
@@ -28,18 +28,13 @@ class Meme {
 }
 
   async run() {
-    let memecontent = {
-
-      toptext: this.texto,
-      bottomtext: this.texto,
-      getdataurl: true
-     
-      };
+ await this.test();
     try {
-      await this.test();
-      const json = await memes.createMeme("IMAGE_URL", memecontent);
+      const json = await memeAsync();
+      json.subreddit = this.subreddit;
+      json.title = this.subreddit;
       let readme = fs.readFileSync("README.md", "utf-8");
-      readme += `<h1>${this.texto}</h1> <img src="${json.image}" alt="meme" width="500" height="500"></img>`;
+      readme += `<h1>${this.texto}</h1> <img src="${json.url}" alt="meme" width="500" height="500"></img>`;
       fs.writeFileSync("README.md", readme);
       console.log("Meme añadido al readme");
     } catch (e) {

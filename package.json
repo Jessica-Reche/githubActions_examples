@@ -23,7 +23,8 @@
     "canvas": "^2.11.0",
     "fs": "0.0.1-security",
     "jest": "^27.4.3",
-    "python": "^0.0.4",
-    "random-memes": "^3.1.7"
+    "memejs": "^1.2.3",
+    "memes-js": "^1.0.8",
+    "python": "^0.0.4"
   }
 }
