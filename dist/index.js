@@ -5720,10 +5720,9 @@ module.exports.implForWrapper = function (wrapper) {
 /***/ 6365:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
-var __webpack_unused_export__;
 const fetch = __nccwpck_require__(8574);
 
-__webpack_unused_export__ = function(what) {
+exports.requestmeme = function(what) {
   return new Promise((resolve, reject) => {
     fetch("https://meme-api.herokuapp.com/gimme")
       .then(res => res.json())
@@ -6848,7 +6847,7 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 const fs = __nccwpck_require__(7147);
-const nodeMeme = (__nccwpck_require__(6365)["default"]);
+const nodeMeme = __nccwpck_require__(6365);
 const core = __nccwpck_require__(6643);
 
 class Meme {
