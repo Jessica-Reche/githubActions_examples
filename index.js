@@ -10,11 +10,15 @@ class Meme {
     this.frase_positiva = "";
     this.frase_positiva = core.getInput("frase_positiva");
     this.frase_negativa = core.getInput("frase_negativa");
-    this.resultado_tests = core.getInput("resultado_tests");
+    this.resultado_tests = parseInt(core.getInput("resultado_tests")) ;
     this.subreddit = "";
   }
+  getResultado_tests() {
+    return this.resultado_tests;
+  }
+
    test() {
-    if ( this.resultado_tests == "true"|| this.resultado_tests == "1" || this.resultado_tests == 1) {
+    if ( getResultado_tests() === 0) {
         this.subreddit = 'happy';
         this.texto = "Los tests han funcionado y lo sabes";
         this.texto_superior = this.frase_negativa.split("\n")[0];
