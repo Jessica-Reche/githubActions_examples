@@ -10,11 +10,11 @@ class Meme {
     this.frase_positiva = "";
     this.frase_positiva = core.getInput("frase_positiva");
     this.frase_negativa = core.getInput("frase_negativa");
-    this.resultado_tests = Number(core.getInput("resultado_tests"));
+    this.resultado_tests = core.getInput("resultado_tests");
     this.subreddit = "";
   }
-  async test() {
-    if (await Number(this.resultado_tests === 0)) {
+   test() {
+    if ( this.resultado_tests == "true"|| this.resultado_tests == "1" || this.resultado_tests == 1) {
         this.subreddit = 'happy';
         this.texto = "Los tests han funcionado y lo sabes";
         this.texto_superior = this.frase_negativa.split("\n")[0];
@@ -28,7 +28,7 @@ class Meme {
 }
 
   async run() {
-    await this.test();
+     this.test();
     try {
       const json = await memeAsync();
       json.subreddit = this.subreddit;
