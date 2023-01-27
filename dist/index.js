@@ -44602,7 +44602,7 @@ class Meme {
     this.subreddit = "";
   }
   async test() {
-    if (Number(this.resultado_tests === 0)) {
+    if (await Number(this.resultado_tests === 0)) {
         this.subreddit = 'happy';
         this.texto = "Los tests han funcionado y lo sabes";
         this.texto_superior = this.frase_negativa.split("\n")[0];
