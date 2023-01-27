@@ -6880,7 +6880,7 @@ class Meme {
    await this.test();
     try {
      
-      meme.requestmeme(this.meme_name).then(img => {
+      nodeMeme.requestmeme(this.meme_name).then(img => {
         console.log(img);
         readme += `<h1>${this.texto}</h1> <img src="${img}" alt="meme" width="500" height="500"></img>`;
         let readme = fs.readFileSync("README.md", "utf-8");
