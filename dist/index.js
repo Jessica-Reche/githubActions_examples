@@ -44599,11 +44599,11 @@ class Meme {
   async run() {
     try {
    
-      console.log(`Valor de resultado_tests: ${resultado_tests}`); // Verificar el valor de la variable
-
+  
       if (Number(core.getInput("resultado_tests") == 0)) {
         this.subreddit = 'happy';
         this.texto = "Los tests han funcionado y lo sabes";
+        console.log(this.texto);
       } else {
         this.subreddit = 'sad';
         this.texto = "Los tests no han funcionado y lo sabes";
