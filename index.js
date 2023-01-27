@@ -3,23 +3,24 @@ const { memeAsync } = require("memejs");
 const core = require("@actions/core");
 
 class Meme {
-  constructor(resultado_tests) {
+  constructor() {
     this.texto = "";
     this.subreddit = "meme";
-    this.resultado_tests = resultado_tests;
   }
-  test() {
-    if (this.resultado_tests === 1) {
+  
+  async run() {
+    try {
+      const resultado_tests = Number(core.getInput("resultado_tests"));
+      console.log(`Valor de resultado_tests: ${resultado_tests}`); // Verificar el valor de la variable
+
+      if (resultado_tests === 0) {
         this.subreddit = 'happy';
         this.texto = "Los tests han funcionado y lo sabes";
-    } else {
-      this.subreddit = 'sad';
-      this.texto = "Los tests no han funcionado y lo sabes";
-    }
-  }
-  async run() {
-    this.test();
-    try {
+      } else {
+        this.subreddit = 'sad';
+        this.texto = "Los tests no han funcionado y lo sabes";
+      }
+
       const json = await memeAsync();
       json.subreddit = this.subreddit;
       json.title = this.subreddit;
@@ -32,6 +33,4 @@ class Meme {
     }
   }
 }
-const resultado_tests = Number(core.getInput("resultado_tests"));
-new Meme(resultado_tests).run();
-
+new Meme().run();
