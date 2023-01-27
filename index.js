@@ -18,7 +18,7 @@ async function run(frase_positiva, frase_negativa) {
   let texto;
 
 
-   console.log('Resultado:',typeof parseInt(core.getInput("resultado_tests")),'Valor:', core.getInput("resultado_tests") );
+   console.log('Resultado:',typeof parseInt(core.getInput("resultado_tests")),'Valor:', parseInt(core.getInput("resultado_tests"),'otro valor:',core.getInput("resultado_tests").toString()) );
  
       if (parseInt(core.getInput("resultado_tests")) === 0 ) {
         console.log(core.getInput("resultado_tests"));
