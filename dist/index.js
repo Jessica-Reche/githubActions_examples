@@ -44589,18 +44589,15 @@ var __webpack_exports__ = {};
 const fs = __nccwpck_require__(7147);
 const { memeAsync } = __nccwpck_require__(3062);
 const core = __nccwpck_require__(6643);
-const resultado_tests = Number(core.getInput("resultado_tests"));
-
-console.log(resultado_tests); // Se agrega esta línea para verificar que se está asignando el valor correcto a la variable
 
 class Meme {
   constructor(resultado_tests) {
     this.texto = "";
-    this.resultado_tests = resultado_tests;
     this.subreddit = "meme";
+    this.resultado_tests = resultado_tests;
   }
   test() {
-    if (this.resultado_tests !== 1) {
+    if (this.resultado_tests === 1) {
         this.subreddit = 'happy';
         this.texto = "Los tests han funcionado y lo sabes";
     } else {
@@ -44623,11 +44620,9 @@ class Meme {
     }
   }
 }
+const resultado_tests = Number(core.getInput("resultado_tests"));
+new Meme(resultado_tests).run();
 
-
-const meme = new Meme(resultado_tests);
-console.log(meme.resultado_tests); // Se agrega esta línea para verificar que se está pasando el valor correcto al constructor
-meme.run();
 
 })();
 
