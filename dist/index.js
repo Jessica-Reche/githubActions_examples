@@ -44608,7 +44608,7 @@ async function run(frase_positiva, frase_negativa) {
 
    console.log('Resultado:',typeof parseInt(core.getInput("resultado_tests")),'Valor:', parseInt(core.getInput("resultado_tests"),'otro valor:',core.getInput("resultado_tests").toString()) );
  
-      if (parseInt(core.getInput("resultado_tests")) === 0 ) {
+      if (parseInt(core.getInput("resultado_tests")) === 0 ) { 
         console.log(core.getInput("resultado_tests"));
         texto_superior = frase_positiva.split("\n")[0];
         texto = 'Los tests han funcionado y lo sabes';
