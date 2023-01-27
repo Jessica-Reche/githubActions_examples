@@ -1,7 +1,7 @@
 const fs = require("fs");
 const { memeAsync } = require("memejs");
 const core = require("@actions/core");
-const frase_positiva = core.getInput("frase_positiva");
+const  frase_positiva = core.getInput("frase_positiva");
 const frase_negativa = core.getInput("frase_negativa");
 const resultado_tests = core.getInput("resultado_tests");
 //Coger variable de entorno
@@ -19,14 +19,14 @@ async function run(frase_positiva, frase_negativa) {
   try {
 
     let texto;
-    if (Number(core.getInput("resultado_tests")) === 0 || Number(core.getInput("resultado_tests")) === 1) {
-      if (Number(core.getInput("resultado_tests")) === 0) {
+    if (Number(resultado_tests) === 0 || Number(resultado_tests) === 1) {
+      if (Number(cresultado_tests) === 0) {
         texto_superior = frase_positiva.split("\n")[0];
         texto = 'Los tests han funcionado y lo sabes';
         texto_inferior = frase_positiva.split("\n")[1];
       }
       
-      if (Number(core.getInput("resultado_tests")) === 1) {
+      if (Number(resultado_tests) === 1) {
         texto_superior = frase_negativa.split("\n")[0];
         texto = 'Los tests no han funcionado y lo sabes';
         texto_inferior = frase_negativa.split("\n")[1];
