@@ -44596,7 +44596,7 @@ class Meme {
     this.texto = "";
     this.texto_inferior = "";
     this.frase_negativa = core.getInput("frase_negativa");
-    this.resultado_tests = parseInt(core.getInput("resultado_tests"));
+    this.resultado_tests = Number(core.getInput("resultado_tests"));
     this.subreddit = "";
   }
 
