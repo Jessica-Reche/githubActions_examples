@@ -1,5 +1,5 @@
 const fs = require("fs");
-const { memeAsync } = require("meme-js");
+const { memes } = require("meme-js");
 const core = require("@actions/core");
 
 class Meme {
