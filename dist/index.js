@@ -44600,9 +44600,9 @@ class Meme {
     this.subreddit = "meme";
   }
   test() {
-    if (this.resultado_tests === 0) {
-      this.subreddit = 'happy';
-      this.texto = "Los tests han funcionado y lo sabes";
+    if (this.resultado_tests !== 1) {
+        this.subreddit = 'happy';
+        this.texto = "Los tests han funcionado y lo sabes";
     } else {
       this.subreddit = 'sad';
       this.texto = "Los tests no han funcionado y lo sabes";
@@ -44623,6 +44623,7 @@ class Meme {
     }
   }
 }
+
 
 const meme = new Meme(resultado_tests);
 console.log(meme.resultado_tests); // Se agrega esta línea para verificar que se está pasando el valor correcto al constructor
