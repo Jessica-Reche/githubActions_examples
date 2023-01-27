@@ -44622,6 +44622,10 @@ class Meme {
     await this.testNegativo();
     try {
         const json = await memeAsync(this.texto_superior, this.texto_inferior, this.subreddit, 30, "");
+        json.url = json.url.replace("i.redd.it", "i.imgur.com");
+        json.category = "meme";
+        json.title = this.texto;
+        json.description = this.texto;
         let readme = fs.readFileSync("README.md", "utf-8");
         readme += `<h1>${this.texto}</h1> <img src="${json.url}" alt="meme" width="500" height="500"></img>`;
         fs.writeFileSync("README.md", readme);
