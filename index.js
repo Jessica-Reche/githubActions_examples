@@ -1,5 +1,5 @@
 const fs = require("fs");
-const nodeMeme = require('node-meme').default;
+const nodeMeme = require('node-meme');
 const core = require("@actions/core");
 
 class Meme {
@@ -30,13 +30,9 @@ class Meme {
   async run() {
    await this.test();
     try {
-      const json = await nodeMeme.requestmeme(this.meme_name,{
-        caption: this.texto,
-        topCaption: this.texto_superior,
-        bottomCaption: this.texto_inferior
-      });
+      const json = await nodeMeme.requestmeme(this.meme_name);
       let readme = fs.readFileSync("README.md", "utf-8");
-      readme += `<h1>${this.texto}</h1> <img src="${json.url}" alt="meme" width="500" height="500"></img>`;
+      readme += `<h1>${this.texto}</h1> <img src="${json}" alt="meme" width="500" height="500"></img>`;
       fs.writeFileSync("README.md", readme);
       console.log("Meme añadido al readme");
     } catch (e) {
