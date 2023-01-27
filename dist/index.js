@@ -44607,25 +44607,20 @@ async function run(frase_positiva, frase_negativa) {
 
 
    
-    if (Number(core.getInput("resultado_tests")) === 0 || Number(core.getInput("resultado_tests")) === 1) {
-      if (Number(core.getInput("resultado_tests")) === 0) {
+ 
+      if (Number(core.getInput("resultado_tests")) === 0 || core.getInput("resultado_tests") === "0") {
         texto_superior = frase_positiva.split("\n")[0];
         texto = 'Los tests han funcionado y lo sabes';
         texto_inferior = frase_positiva.split("\n")[1];
       }
       
-      if (Number(core.getInput("resultado_tests")) === 1) {
+      if (Number(core.getInput("resultado_tests")) === 1 || core.getInput("resultado_tests") === "1") {
         texto_superior = frase_negativa.split("\n")[0];
         texto = 'Los tests no han funcionado y lo sabes';
         texto_inferior = frase_negativa.split("\n")[1];
       }
 
-    } else {
-      texto_superior = "No se ha podido leer el resultado de los tests";
-      texto = 'No se ha podido leer el resultado de los tests';
-      texto_inferior = "No se ha podido leer el resultado de los tests";
-
-    }
+    
 
     memeAsync(texto_superior, texto_inferior, "Impact", 30, "")
 
