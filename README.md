@@ -1,1 +1,0 @@
-<h1></h1> <img src="https://i.redd.it/hq93w38a7mea1.jpg" alt="meme" width="500" height="500"></img>
