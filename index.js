@@ -7,7 +7,7 @@ class Meme {
 
     this.texto = "";
     this.resultado_tests = Number(core.getInput("resultado_tests"));
-    this.subreddit = "";
+    this.subreddit = "meme";
   }
   test() {
     if (this.resultado_tests === 0) {
@@ -27,7 +27,7 @@ class Meme {
       json.subreddit = this.subreddit;
       json.title = this.subreddit;
       let readme = fs.readFileSync("README.md", "utf-8");
-      readme += `<h1>${this.texto}</h1> <img src="${json.url}" alt="meme" width="500" height="500"></img>`;
+      readme = `<h1>${this.texto}</h1> <img src="${json.url}" alt="meme" width="500" height="500"></img>`;
       fs.writeFileSync("README.md", readme);
       console.log("Meme añadido al readme");
     } catch (e) {
