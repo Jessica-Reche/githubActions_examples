@@ -44592,7 +44592,7 @@ const core = __nccwpck_require__(6643);
 const resultado_tests = Number(core.getInput("resultado_tests"));
 
 class Meme {
-  constructor(resultado_tests) {
+  constructor() {
     this.texto = "";
     this.resultado_tests = resultado_tests;
     this.subreddit = "meme";
@@ -44623,7 +44623,7 @@ class Meme {
     }
   }
 }
-new Meme(resultado_tests).run();
+new Meme().run();
 
 })();
 
