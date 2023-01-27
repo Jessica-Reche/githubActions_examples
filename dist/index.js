@@ -6876,7 +6876,7 @@ class Meme {
 }
 
   async run() {
-  
+  await this.test();
     try {
       const json = await nodeMeme.generate(this.meme_name, this.texto);
       let readme = fs.readFileSync("README.md", "utf-8");
