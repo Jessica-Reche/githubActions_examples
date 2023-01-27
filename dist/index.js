@@ -44593,7 +44593,6 @@ const resultado_tests = parseInt(core.getInput("resultado_tests"));
 
 class Meme {
   constructor(resultado_tests) {
-
     this.texto = "";
     this.resultado_tests = resultado_tests;
     this.subreddit = "meme";

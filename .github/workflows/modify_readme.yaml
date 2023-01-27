@@ -36,7 +36,6 @@ jobs:
             else
                 echo "::set-output name=resultado_tests::0"
               fi
-            
            
       - name: Agregar meme al readme
         uses: ./
