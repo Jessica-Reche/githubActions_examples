@@ -4,14 +4,7 @@ const { memeAsync } = require("memejs");
 const core = require("@actions/core");
 class Meme {
   //declarlo como variable de clase
-  mensajes = {
-    0: "Los tests han funcionado y lo sabes",
-    1: "Los tests han fallado y lo sabes"
-  }[Number(core.getInput("resultado_tests"))]
-  subreddit = {
-    0: "happy",
-    1: "sad"
-  }[Number(core.getInput("resultado_tests"))]
+
  
   
   constructor(mensajes,subreddit) {
@@ -32,5 +25,14 @@ class Meme {
       console.log(e);
     }
   }
-}
-new Meme().run(); 
+};
+
+let mensajes = {
+  0: "Los tests han funcionado y lo sabes",
+  1: "Los tests han fallado y lo sabes"
+}[Number(core.getInput("resultado_tests"))]
+ let subreddit = {
+  0: "happy",
+  1: "sad"
+}[Number(core.getInput("resultado_tests"))]
+new Meme(mensajes,subreddit).run(); 
