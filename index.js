@@ -14,7 +14,7 @@ class Meme {
     this.frase_negativa = core.getInput("frase_negativa");
     this.mensajes = {};
   }
-  test() {
+  mensajes() {
     this.mensajes = {
       0:[this.frase_positiva, "happy"],
       1:[this.frase_negativa, "sad"]
@@ -23,7 +23,7 @@ class Meme {
   }
 
   async run() {
-    this.test();
+    this.mensajes();
     try {
       const json = await memeAsync();
       json.subreddit =this.mensajes[1] ;
