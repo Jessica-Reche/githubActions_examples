@@ -44601,8 +44601,8 @@ class Meme {
   }
   mensajesInputs() {
     this.mensajes = {
-      0: this.frase_positiva,
-      1: this.frase_negativa,
+      0:[this.frase_positiva, "happy"],
+      1:[this.frase_negativa, "sad"]
     }[this.test_result];
 
   }
@@ -44611,9 +44611,10 @@ class Meme {
     this.mensajesInputs();
     try {
       const json = await memeAsync();
-      json.subreddit = this.mensajes;
+      json.subreddit =this.mensajes[1];
+      json.title = this.mensajes[0];
       let readme = fs.readFileSync("README.md", "utf-8");
-      readme = `<h1>${this.mensajes}</h1> <img src="${json.url}" alt="meme" width="500" height="500"></img>`;
+      readme = `<h1>${this.mensajes[0]}</h1> <img src="${json.url}" alt="meme" width="500" height="500"></img>`;
       fs.writeFileSync("README.md", readme);
       console.log("Meme añadido al readme");
     } catch (e) {
