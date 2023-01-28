@@ -1,1 +1,1 @@
-<h1>Los tests han fallado y lo sabes</h1> <img src="https://i.redd.it/1sjxt7tyifea1.gif" alt="meme" width="500" height="500"></img>
+<h1>Los tests han fallado y lo sabes</h1> <img src="https://i.redd.it/cj86hqxk8mea1.jpg" alt="meme" width="500" height="500"></img>
