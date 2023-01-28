@@ -44611,7 +44611,7 @@ class Meme {
     this.mensajesInputs();
     try {
       const json = await memeAsync();
-      json.subreddit =this.mensajes[1] ;
+      json.subreddit =this.mensajes[0] ;
       let readme = fs.readFileSync("README.md", "utf-8");
       readme = `<h1>${this.mensajes[0]}</h1> <img src="${json.url}" alt="meme" width="500" height="500"></img>`;
       fs.writeFileSync("README.md", readme);
