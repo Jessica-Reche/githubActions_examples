@@ -19,7 +19,7 @@ class Meme {
       console.log(json);
       let readme = fs.readFileSync("README.md", "utf-8");
       console.log(this.mensajes);
-      readme += `<h1>${this.mensajes}</h1> <img src="${json.url}" alt="meme" width="500" height="500"></img>`;
+      readme = `<h1>${this.mensajes}</h1> <img src="${json.url}" alt="meme" width="500" height="500"></img>`;
       console.log(this.mensajes);
       fs.writeFileSync("README.md", readme);
       console.log(readme);
