@@ -5,9 +5,9 @@ const core = require("@actions/core");
 class Meme {
   //declarlo como variable de clase
 
- 
-  
-  constructor(mensajes,subreddit) {
+
+
+  constructor(mensajes, subreddit) {
     this.mensajes = mensajes;
     this.subreddit = subreddit;
   }
@@ -19,27 +19,31 @@ class Meme {
       console.log(json);
       let readme = fs.readFileSync("README.md", "utf-8");
       console.log(this.mensajes);
-      readme = `<h1>${this.mensajes}</h1> <img src="${json.url}" alt="meme" width="500" height="500"></img>`;
+      readme += `<h1>${this.mensajes}</h1> <img src="${json.url}" alt="meme" width="500" height="500"></img>`;
       console.log(this.mensajes);
       fs.writeFileSync("README.md", readme);
-      console.log(readme);
+
       console.log("Meme añadido al readme");
     } catch (e) {
       console.log(e);
     }
   }
 };
+function addMeme() {
+  let mensajes = {
+    0: "Los tests han funcionado y lo sabes",
+    1: "Los tests han fallado y lo sabes"
+  }[Number(core.getInput("resultado_tests"))]
+  let subreddit = {
+    0: "happy",
+    1: "sad"
+  }[Number(core.getInput("resultado_tests"))]
+  console.log(mensajes);
+  console.log(subreddit);
+  console.log(Number(core.getInput("resultado_tests")));
+  new Meme(mensajes, subreddit).run();
+}
 
-let mensajes = {
-  0: "Los tests han funcionado y lo sabes",
-  1: "Los tests han fallado y lo sabes"
-}[Number(core.getInput("resultado_tests"))]
- let subreddit = {
-  0: "happy",
-  1: "sad"
-}[Number(core.getInput("resultado_tests"))]
-console.log(mensajes);
-console.log(subreddit);
-console.log(Number(core.getInput("resultado_tests")));
+addMeme();
 
-new Meme(mensajes,subreddit).run(); 
+
