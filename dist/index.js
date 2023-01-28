@@ -44584,26 +44584,37 @@ module.exports = JSON.parse('["ac","com.ac","edu.ac","gov.ac","net.ac","mil.ac",
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
+"use strict";
+
 const fs = __nccwpck_require__(7147);
 const { memeAsync } = __nccwpck_require__(3062);
 const core = __nccwpck_require__(6643);
 class Meme {
-  constructor() {
-    this.texto ;
-    this.subreddit = "meme";
-    this.resultado_tests = Number(core.getInput("resultado_tests"))===1?false:true ;
-  }
+  //declarlo como variable de clase
+  mensajes = {
+    0: "Los tests han funcionado y lo sabes",
+    1: "Los tests han fallado y lo sabes"
+  }[Number(core.getInput("resultado_tests"))]
+  subreddit = {
+    0: "happy",
+    1: "sad"
+  }[Number(core.getInput("resultado_tests"))]
+ 
   
+  constructor(mensajes,subreddit) {
+    this.mensajes = mensajes;
+    this.subreddit = subreddit;
+  }
+
   async run() {
     try {
       const json = await memeAsync();
-      json.subreddit = this.resultado_tests ?  'sad' :'happy';
-     
+      json.subreddit = this.subreddit;
       json.title = this.subreddit;
       let readme = fs.readFileSync("README.md", "utf-8");
-      readme = `<h1>${ this.texto = this.resultado_tests ?  "Los tests han funcionado y lo sabes" :"Los tests han fallado y lo sabes"}</h1> <img src="${json.url}" alt="meme" width="500" height="500"></img>`;
+      readme = `<h1>${this.mensajes}</h1> <img src="${json.url}" alt="meme" width="500" height="500"></img>`;
       fs.writeFileSync("README.md", readme);
       console.log("Meme añadido al readme");
     } catch (e) {
