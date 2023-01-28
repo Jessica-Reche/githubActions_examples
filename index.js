@@ -35,4 +35,8 @@ let mensajes = {
   0: "happy",
   1: "sad"
 }[Number(core.getInput("resultado_tests"))]
+console.log(mensajes);
+console.log(subreddit);
+console.log(Number(core.getInput("resultado_tests")));
+
 new Meme(mensajes,subreddit).run(); 
