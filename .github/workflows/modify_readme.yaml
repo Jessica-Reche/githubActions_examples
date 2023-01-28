@@ -14,35 +14,20 @@ jobs:
         run: |
           npm install
           npm test
-          result=$?
-          #resultado de la ejecución de los tests
-          echo "::set-output name=result::$result"
      
   agregar_meme:
     runs-on: ubuntu-latest 
     if: ${{ always() }}
     needs: test
-    outputs:
-      resultado_tests: ${{ steps.obtener_resultado.outputs.resultado_tests }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Obtener resultado de los tests
-        id: obtener_resultado
-        run: |
-            #si no recibe parametros el output se crea otro output en este job con el valor 1
-            if [ -z "${{ needs.test.outputs.resultado_tests }}" ]; then
-               echo "::set-output name=resultado_tests::1"
-            else
-                echo "::set-output name=resultado_tests::0"
-              fi
-           
       - name: Agregar meme al readme
         uses: ./
         with:
           frase_positiva: "Los tests han funcionado y lo sabes"
           frase_negativa: "Los tests han fallado y lo sabes"
-          resultado_tests: ${{ steps.obtener_resultado.outputs.resultado_tests }}
+          resultado_tests: ${{ needs.test.outputs.resultado_tests }}
       - name: Commit and push
         run: |
           git config  user.name  Jessica-Reche
