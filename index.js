@@ -18,8 +18,10 @@ class Meme {
       json.subreddit = this.subreddit;
       json.title = this.subreddit;
       let readme = fs.readFileSync("README.md", "utf-8");
+      console.log(this.mensajes);
       readme = `<h1>${this.mensajes}</h1> <img src="${json.url}" alt="meme" width="500" height="500"></img>`;
       fs.writeFileSync("README.md", readme);
+      console.log(this.mensajes);
       console.log("Meme añadido al readme");
     } catch (e) {
       console.log(e);
