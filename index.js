@@ -7,22 +7,29 @@ class Meme {
 
 
 
-  constructor(mensajes, subreddit) {
-    this.mensajes = mensajes;
-    this.subreddit = subreddit;
+  constructor() {
+    this.mensajes ="";
+    this.test_result = Number(core.getInput("resultado_tests"));
+    this.frase_positiva = core.getInput("frase_positiva");
+    this.frase_negativa = core.getInput("frase_negativa");
+    this.mensajes = {};
+  }
+  test() {
+    this.mensajes = {
+      0:[this.frase_positiva, "happy"],
+      1:[this.frase_negativa, "sad"]
+    }[this.test_result];
+
   }
 
   async run() {
+    this.test();
     try {
       const json = await memeAsync();
-      json.subreddit = this.subreddit;
-      console.log(json);
+      json.subreddit =this.mensajes[1] ;
       let readme = fs.readFileSync("README.md", "utf-8");
-      console.log(this.mensajes);
-      readme = `<h1>${this.mensajes}</h1> <img src="${json.url}" alt="meme" width="500" height="500"></img>`;
-      console.log(this.mensajes);
+      readme = `<h1>${this.mensajes[0]}</h1> <img src="${json.url}" alt="meme" width="500" height="500"></img>`;
       fs.writeFileSync("README.md", readme);
-
       console.log("Meme añadido al readme");
     } catch (e) {
       console.log(e);
@@ -30,14 +37,7 @@ class Meme {
   }
 };
 function addMeme() {
-  let mensajes = {
-    0: "Los tests han funcionado y lo sabes",
-    1: "Los tests han fallado y lo sabes"
-  }[Number(core.getInput("resultado_tests"))]
-  let subreddit = {
-    0: "happy",
-    1: "sad"
-  }[Number(core.getInput("resultado_tests"))]
+
   console.log(mensajes);
   console.log(subreddit);
   console.log(Number(core.getInput("resultado_tests")));
