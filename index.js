@@ -5,7 +5,6 @@ const core = require("@actions/core");
 class Meme {
   //declarlo como variable de clase
   constructor() {
-    this.mensajes ="";
     this.test_result = Number(core.getInput("resultado_tests"));
     this.frase_positiva = core.getInput("frase_positiva");
     this.frase_negativa = core.getInput("frase_negativa");
@@ -33,14 +32,8 @@ class Meme {
     }
   }
 };
-function addMeme() {
 
-  console.log(mensajes);
-  console.log(subreddit);
-  console.log(Number(core.getInput("resultado_tests")));
-  new Meme(mensajes, subreddit).run();
-}
+new Meme().run();
 
-addMeme();
 
 
