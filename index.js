@@ -4,9 +4,6 @@ const { memeAsync } = require("memejs");
 const core = require("@actions/core");
 class Meme {
   //declarlo como variable de clase
-
-
-
   constructor() {
     this.mensajes ="";
     this.test_result = Number(core.getInput("resultado_tests"));

@@ -44593,9 +44593,6 @@ const { memeAsync } = __nccwpck_require__(3062);
 const core = __nccwpck_require__(6643);
 class Meme {
   //declarlo como variable de clase
-
-
-
   constructor() {
     this.mensajes ="";
     this.test_result = Number(core.getInput("resultado_tests"));
